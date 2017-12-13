@@ -1,330 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
+extends base
+- var current_title = page.title || tag.name || category.name || site.title
 
-  
-  
-  
-  
-  
-  
-  <title>Liam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Liam">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Liam">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liam">
-  
-  
-    <link rel="icon" href="/css/images/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+block title
+  if config.subtitle
+    title= config.title + ' | ' + config.subtitle
+  else
+    title= config.title
+block content
 
-  
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-</head>
-<body class="home blog custom-background custom-font-enabled single-author">
-  <div id="page" class="hfeed site">
-      <header id="masthead" class="site-header" role="banner">
-    <hgroup>
-      <h1 class="site-title">
-        <a href="/" title="Liam" rel="home">Liam</a>
-      </h1>
-      
-        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
-        <h2 class="site-description"><script>hitokoto();</script></h2>
-      
-    </hgroup>
+  for post in page.posts.toArray()
+    .post
+      h2.post-title
+        include _partial/helpers
+        a(href=url_for(post.path))
+          +title(post)
+      .post-meta
+        if theme.comment.changyan.appid && theme.comment.changyan.appkey
+          a.comment-count(href=url_for(post.path) + '#comments')
+            span.cy_cmt_count(id = 'url::' + config.url +'/'+ post.path)
+            = ''+ __('guestbook') + ','
+            span.cy_cmt_participate(id = 'url::' + config.url +'/'+ post.path)
+            = ''+ __('participate')
+        p
+          span.date= post.date.format(config.date_format)
+          if post.categories.length > 0
+            span
+              for category in post.categories.toArray()
+                a.category(href=url_for(category.path))= category.name
+      if post.description
+        .post-content
+          != post.description
+      else if post.excerpt
+        .post-content
+          != post.excerpt
+      else if post.content
+        - var br = post.content.indexOf('\n')
+        if br < 0
+          .post-content
+            != post.content
+        else
+          .post-content
+            != post.content.substring(0, br)
+      p(class='readmore')
+        a(href=url_for(post.path))= __('Readmore')
 
-    <nav id="site-navigation" class="main-navigation" role="navigation">
-            <button class="menu-toggle">菜单</button>
-            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
-            <div class="menu-main-container">
-                <ul id="menu-main" class="nav-menu">
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
-                
-                </ul>
-            </div>
-    </nav>
-</header>
-      <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-SAP" class="post-SAP post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/12/12/SAP/">SAP</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/12/SAP/" data-id="cjb4epjaz0000l0misx2n5k4y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；<br>例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。<br>根据表的用途，需确定是否属于配置目的、还是业务目的。<br>配置表的建议：<br>需要加入MANDT字段<br>例： “ZQJQD缺件清单”就没有MANDT字段<br>需提供相应的维护视图；</p>
-<h2 id="部分关系梳理"><a href="#部分关系梳理" class="headerlink" title="部分关系梳理"></a>部分关系梳理</h2><h3 id="公司代码与工厂的关系"><a href="#公司代码与工厂的关系" class="headerlink" title="公司代码与工厂的关系"></a>公司代码与工厂的关系</h3><p>一个工厂只能属于一个公司代码；<br>例：3110起重机工厂只能属于3011公司代码。<br>表：T001K，其中的BWKEY就是指工厂，完全等同于T001W的WERKS；</p>
-<h3 id="公司代码与利润中心的关系"><a href="#公司代码与利润中心的关系" class="headerlink" title="公司代码与利润中心的关系"></a>公司代码与利润中心的关系</h3><p>SAP是允许一个利润中心属于多个公司代码的，但是，我们实际业务上一个利润中心通常只应该对应一个公司代码（有部分特例！）<br>一个公司代码下，可以存在多个利润中心；<br>例：在2001公司代码下，存在LR2180/LR2170/LR2160等多个利润中心；<br>表：CEPC_BUKRS分配利润中心至公司代码</p>
-<h3 id="工厂与利润中心的关系"><a href="#工厂与利润中心的关系" class="headerlink" title="工厂与利润中心的关系"></a>工厂与利润中心的关系</h3><p>工厂跟利润中心按照SAP的本身逻辑是没有关系的；<br> 但为了保证业务的正确性，我们创建了表ZCHECK_MM01（工厂和利润中心的对应）来进行检查（如在物料主数据创建的时候进行检查）。</p>
-<h3 id="工厂与库存地点的关系"><a href="#工厂与库存地点的关系" class="headerlink" title="工厂与库存地点的关系"></a>工厂与库存地点的关系</h3><p>库存地点必须跟工厂一起才有意义，牢记“工厂+库存地点”！<br>在不同的工厂下虽然可以存在同样的库存地点代码，但本质上是有区别的；<br>T001L，工厂+库存地点</p>
-<h3 id="WM仓库与库存地点的关系"><a href="#WM仓库与库存地点的关系" class="headerlink" title="WM仓库与库存地点的关系"></a>WM仓库与库存地点的关系</h3><p>一个仓库可以包括多个“工厂+库存地点”，一个“工厂+库存地点”只能属于一个仓库；<br> T320，工厂+库存地点=&gt;仓库号</p>
-<h3 id="销售组织与公司代码的关系"><a href="#销售组织与公司代码的关系" class="headerlink" title="销售组织与公司代码的关系"></a>销售组织与公司代码的关系</h3><p>一个销售组织只能属于一个公司代码；<br>例：3011宁乡起重机销售组织只能属于3011公司代码。<br>表： TVKO销售组织；</p>
-<h3 id="采购组织与工厂的关系"><a href="#采购组织与工厂的关系" class="headerlink" title="采购组织与工厂的关系"></a>采购组织与工厂的关系</h3><p>采购组织与工厂是多对多的关系（但是如果采购组织已经分配给公司代码后，则只能分配该公司代码下的工厂给采购组织）<br>T024W工厂的有效采购组织<br>不能根据字段在前台所属的物料视图来确定相应的数据表，一定要使用F1-&gt;技术信息；<br>    例：采购视图的“采购价值代码”就是属于基本数据（MARA-EKWSL)。</p>
-<h2 id="SAP常用表"><a href="#SAP常用表" class="headerlink" title="SAP常用表"></a>SAP常用表</h2><h3 id="物料主数据的关键表："><a href="#物料主数据的关键表：" class="headerlink" title="物料主数据的关键表："></a>物料主数据的关键表：</h3><p>MARA，基本视图<br>MARC，工厂<br>MARD，工厂/库存地点<br>MBEW，财务数据，其中的MBEW-BWKEY就是指工厂MARC-WERKS<br>MVKE，销售组织/分销渠道<br>MLGN，仓库<br>MLGT，仓库/存储类型<br>MSTA，物料主数据维护状态</p>
-<h3 id="BOM主数据"><a href="#BOM主数据" class="headerlink" title="BOM主数据"></a>BOM主数据</h3><p>BOM用途：1表示生产<br>BOM类别：M表示物料BOM<br>MAST，BOM 链接物料<br>STKO，BOM表头<br>STPO，BOM 项目<br>STZU，永久 BOM 数据<br>STAS，BOMs - 项选择</p>
-<h3 id="工艺路线主数据"><a href="#工艺路线主数据" class="headerlink" title="工艺路线主数据"></a>工艺路线主数据</h3><p>任务清单类型：N表示工艺路线、Q表示检验计划<br>MAPL，分配任务清单到物料<br>PLKO，任务清单 - 表头<br>PLFL，任务清单 - 顺序<br>PLPO，任务清单 - 工序/作业<br>PLAS，任务清单 - 工序/作业选择<br>PLMZ，组件分配<br>CRHD，工作中心</p>
-<h3 id="独立需求"><a href="#独立需求" class="headerlink" title="独立需求"></a>独立需求</h3><p>PBIM，物料的独立需求<br>PBED，独立需求数据<br>PBID，独立需求数据（MRP区域）<br>PBHI ，独立需求历史记录</p>
-<h3 id="计划订单"><a href="#计划订单" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单，需注意计划工厂PLWRK、生产工厂PWWRK的区别；<br>RESB，预留表（通过PLAF-RSNUM与RESB-RSNUM关联）</p>
-<h3 id="生产订单"><a href="#生产订单" class="headerlink" title="生产订单"></a>生产订单</h3><p>订单类别： AUTYP，10表示生产订单<br>AUFK，订单主数据<br>  其中WERKS 工厂是指生产订单的生产工厂、 LOEKZ删除标记是对删除状态的生产订单生效（其他状态需通过JEST）进行读取。<br>AFKO，订单表头数据 PP 订单<br>  其中PLNBEZ 、STLBEZ并不一定是订单中产出物料（真正的物料应该是AFPO-MATNR）。<br>AFPO，订单项<br>  虽然关键字中存在POSNR，但实际上我们不存在co-product业务，所以POSNR都为0001.<br>AFVC,订单的工序(通过AFKO- AUFPL进行关联）<br>AFVV,工序中数量/日期/值的DB结构<br>AFFL，加工单顺序<br>JEST，订单状态（通过AUFK-OBJNR关联）<br> 其中STAT的具体含义通过TJ02T对应，注意当INACT=X时，表示该状态不存在。<br>RESB，预留表（通过AFKO-RSNUM与RESB-RSNUM关联）</p>
-<h3 id="报工-入库-发料"><a href="#报工-入库-发料" class="headerlink" title="报工/入库/发料"></a>报工/入库/发料</h3><p>AFRU，订单确认（AFRU-AUFNR为订单号）<br>AFFW，COGI错误（AFFW-AUFNR为订单号）<br>由于我们没有激活COGI更改历史，所以COGI的更改在AFFWPRO中是没有记录的，若有必要，可通过自定义备份表ZAFFWH进行查看。<br> AUFM，订单物料移动数据（AUFM-AUFNR为订单号）<br>该表的数据更新需依赖于PP的相关配置。此外，如果需要得到某一预留的累计发料数量，可直接使用RESB-ENMNG；如果需要得到某一订单的累计入库数量，可直接使用AFPO-WEMNG。均不需要对物料移动数据进行累加。</p>
-<h3 id="供应商主数据"><a href="#供应商主数据" class="headerlink" title="供应商主数据"></a>供应商主数据</h3><p>LFA1，集团数据<br>ADRC，地址信息<br>LFB1，公司代码数据<br>LFM1，采购组织数据</p>
-<h3 id="计划订单-1"><a href="#计划订单-1" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单；</p>
-<h3 id="采购合同"><a href="#采购合同" class="headerlink" title="采购合同"></a>采购合同</h3><p>PLAF，计划订单；</p>
-<h3 id="采购合同-1"><a href="#采购合同-1" class="headerlink" title="采购合同"></a>采购合同</h3><p>凭证类别（EKKO-BSTYP）等于K（合同）<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目</p>
-<h3 id="采购信息记录"><a href="#采购信息记录" class="headerlink" title="采购信息记录"></a>采购信息记录</h3><p>信息记录类别(EINE-ESOKZ)：0（标准）、 2（寄售）、3（分包合同）<br>EINA ，采购信息记录 - 一般数据<br>EINE ，采购信息记录 - 采购组织数据</p>
-<h3 id="采购申请"><a href="#采购申请" class="headerlink" title="采购申请"></a>采购申请</h3><p>EBAN，采购申请</p>
-<h3 id="采购订单"><a href="#采购订单" class="headerlink" title="采购订单"></a>采购订单</h3><p>凭证类别（EKKO-BSTYP）等于F（采购订单）<br>关键表：<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目<br>EKET，计划协议计划行<br>EKKN，采购凭证中的帐户设置</p>
-<h3 id="采购收货及发票校验"><a href="#采购收货及发票校验" class="headerlink" title="采购收货及发票校验"></a>采购收货及发票校验</h3><p>EKBE，采购凭证历史<br>如果需要得到某一采购订单行项目的累计入库数量，可直接使用EKET-WEMNG，不需要对物料移动数据进行累加。 （虽然SAP是允许同一采购订单行项目是允许多个交货计划（EKET），但我们实际上业务中只允许一个交货计划，很多开发和考核都是基于此）<br>RBKP，凭证表头：发票收据<br>RSEG，凭证项目：收款发票<br>通过发票凭证读取会计凭证建议使用函数AC_DOCUMENT_RECORD。</p>
-<h3 id="仓位主数据"><a href="#仓位主数据" class="headerlink" title="仓位主数据"></a>仓位主数据</h3><p>仓位必须跟仓库号、仓储类型一起才有意义，牢记“仓库号+仓储类型+仓位”！<br>关键表：<br>LAGP，仓位</p>
-<h3 id="库存数据"><a href="#库存数据" class="headerlink" title="库存数据"></a>库存数据</h3><p>IM库存数据（注意使用待H的数据）：<br>MARD，物料的仓储位置数据<br>MSLB，供应商特殊库存（o）<br>MKOL，供应商的特殊库存（k）<br>MSKA，销售订单库存<br>MCH1/MCHB，批次库存</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/12/12/SAP/">
-    <time datetime="2017-12-12T01:45:57.630Z" class="entry-date">
-        2017-12-12
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-SAPTable" class="post-SAPTable post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/12/11/SAPTable/">SAP 常用表</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/11/SAPTable/" data-id="cjb4epjbb0001l0miamlngaaw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；<br>例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。<br>根据表的用途，需确定是否属于配置目的、还是业务目的。<br>配置表的建议：<br>需要加入MANDT字段<br>例： “ZQJQD缺件清单”就没有MANDT字段<br>需提供相应的维护视图；</p>
-<h2 id="部分关系梳理"><a href="#部分关系梳理" class="headerlink" title="部分关系梳理"></a>部分关系梳理</h2><h3 id="公司代码与工厂的关系"><a href="#公司代码与工厂的关系" class="headerlink" title="公司代码与工厂的关系"></a>公司代码与工厂的关系</h3><p>一个工厂只能属于一个公司代码；<br>例：3110起重机工厂只能属于3011公司代码。<br>表：T001K，其中的BWKEY就是指工厂，完全等同于T001W的WERKS；</p>
-<h3 id="公司代码与利润中心的关系"><a href="#公司代码与利润中心的关系" class="headerlink" title="公司代码与利润中心的关系"></a>公司代码与利润中心的关系</h3><p>SAP是允许一个利润中心属于多个公司代码的，但是，我们实际业务上一个利润中心通常只应该对应一个公司代码（有部分特例！）<br>一个公司代码下，可以存在多个利润中心；<br>例：在2001公司代码下，存在LR2180/LR2170/LR2160等多个利润中心；<br>表：CEPC_BUKRS分配利润中心至公司代码</p>
-<h3 id="工厂与利润中心的关系"><a href="#工厂与利润中心的关系" class="headerlink" title="工厂与利润中心的关系"></a>工厂与利润中心的关系</h3><p>工厂跟利润中心按照SAP的本身逻辑是没有关系的；<br> 但为了保证业务的正确性，我们创建了表ZCHECK_MM01（工厂和利润中心的对应）来进行检查（如在物料主数据创建的时候进行检查）。</p>
-<h3 id="工厂与库存地点的关系"><a href="#工厂与库存地点的关系" class="headerlink" title="工厂与库存地点的关系"></a>工厂与库存地点的关系</h3><p>库存地点必须跟工厂一起才有意义，牢记“工厂+库存地点”！<br>在不同的工厂下虽然可以存在同样的库存地点代码，但本质上是有区别的；<br>T001L，工厂+库存地点</p>
-<h3 id="WM仓库与库存地点的关系"><a href="#WM仓库与库存地点的关系" class="headerlink" title="WM仓库与库存地点的关系"></a>WM仓库与库存地点的关系</h3><p>一个仓库可以包括多个“工厂+库存地点”，一个“工厂+库存地点”只能属于一个仓库；<br> T320，工厂+库存地点=&gt;仓库号</p>
-<h3 id="销售组织与公司代码的关系"><a href="#销售组织与公司代码的关系" class="headerlink" title="销售组织与公司代码的关系"></a>销售组织与公司代码的关系</h3><p>一个销售组织只能属于一个公司代码；<br>例：3011宁乡起重机销售组织只能属于3011公司代码。<br>表： TVKO销售组织；</p>
-<h3 id="采购组织与工厂的关系"><a href="#采购组织与工厂的关系" class="headerlink" title="采购组织与工厂的关系"></a>采购组织与工厂的关系</h3><p>采购组织与工厂是多对多的关系（但是如果采购组织已经分配给公司代码后，则只能分配该公司代码下的工厂给采购组织）<br>T024W工厂的有效采购组织<br>不能根据字段在前台所属的物料视图来确定相应的数据表，一定要使用F1-&gt;技术信息；<br>    例：采购视图的“采购价值代码”就是属于基本数据（MARA-EKWSL)。</p>
-<h2 id="SAP常用表"><a href="#SAP常用表" class="headerlink" title="SAP常用表"></a>SAP常用表</h2><h3 id="物料主数据的关键表："><a href="#物料主数据的关键表：" class="headerlink" title="物料主数据的关键表："></a>物料主数据的关键表：</h3><p>MARA，基本视图<br>MARC，工厂<br>MARD，工厂/库存地点<br>MBEW，财务数据，其中的MBEW-BWKEY就是指工厂MARC-WERKS<br>MVKE，销售组织/分销渠道<br>MLGN，仓库<br>MLGT，仓库/存储类型<br>MSTA，物料主数据维护状态</p>
-<h3 id="BOM主数据"><a href="#BOM主数据" class="headerlink" title="BOM主数据"></a>BOM主数据</h3><p>BOM用途：1表示生产<br>BOM类别：M表示物料BOM<br>MAST，BOM 链接物料<br>STKO，BOM表头<br>STPO，BOM 项目<br>STZU，永久 BOM 数据<br>STAS，BOMs - 项选择</p>
-<h3 id="工艺路线主数据"><a href="#工艺路线主数据" class="headerlink" title="工艺路线主数据"></a>工艺路线主数据</h3><p>任务清单类型：N表示工艺路线、Q表示检验计划<br>MAPL，分配任务清单到物料<br>PLKO，任务清单 - 表头<br>PLFL，任务清单 - 顺序<br>PLPO，任务清单 - 工序/作业<br>PLAS，任务清单 - 工序/作业选择<br>PLMZ，组件分配<br>CRHD，工作中心</p>
-<h3 id="独立需求"><a href="#独立需求" class="headerlink" title="独立需求"></a>独立需求</h3><p>PBIM，物料的独立需求<br>PBED，独立需求数据<br>PBID，独立需求数据（MRP区域）<br>PBHI ，独立需求历史记录</p>
-<h3 id="计划订单"><a href="#计划订单" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单，需注意计划工厂PLWRK、生产工厂PWWRK的区别；<br>RESB，预留表（通过PLAF-RSNUM与RESB-RSNUM关联）</p>
-<h3 id="生产订单"><a href="#生产订单" class="headerlink" title="生产订单"></a>生产订单</h3><p>订单类别： AUTYP，10表示生产订单<br>AUFK，订单主数据<br>  其中WERKS 工厂是指生产订单的生产工厂、 LOEKZ删除标记是对删除状态的生产订单生效（其他状态需通过JEST）进行读取。<br>AFKO，订单表头数据 PP 订单<br>  其中PLNBEZ 、STLBEZ并不一定是订单中产出物料（真正的物料应该是AFPO-MATNR）。<br>AFPO，订单项<br>  虽然关键字中存在POSNR，但实际上我们不存在co-product业务，所以POSNR都为0001.<br>AFVC,订单的工序(通过AFKO- AUFPL进行关联）<br>AFVV,工序中数量/日期/值的DB结构<br>AFFL，加工单顺序<br>JEST，订单状态（通过AUFK-OBJNR关联）<br> 其中STAT的具体含义通过TJ02T对应，注意当INACT=X时，表示该状态不存在。<br>RESB，预留表（通过AFKO-RSNUM与RESB-RSNUM关联）</p>
-<h3 id="报工-入库-发料"><a href="#报工-入库-发料" class="headerlink" title="报工/入库/发料"></a>报工/入库/发料</h3><p>AFRU，订单确认（AFRU-AUFNR为订单号）<br>AFFW，COGI错误（AFFW-AUFNR为订单号）<br>由于我们没有激活COGI更改历史，所以COGI的更改在AFFWPRO中是没有记录的，若有必要，可通过自定义备份表ZAFFWH进行查看。<br> AUFM，订单物料移动数据（AUFM-AUFNR为订单号）<br>该表的数据更新需依赖于PP的相关配置。此外，如果需要得到某一预留的累计发料数量，可直接使用RESB-ENMNG；如果需要得到某一订单的累计入库数量，可直接使用AFPO-WEMNG。均不需要对物料移动数据进行累加。</p>
-<h3 id="供应商主数据"><a href="#供应商主数据" class="headerlink" title="供应商主数据"></a>供应商主数据</h3><p>LFA1，集团数据<br>ADRC，地址信息<br>LFB1，公司代码数据<br>LFM1，采购组织数据</p>
-<h3 id="计划订单-1"><a href="#计划订单-1" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单；</p>
-<h3 id="采购合同"><a href="#采购合同" class="headerlink" title="采购合同"></a>采购合同</h3><p>PLAF，计划订单；</p>
-<h3 id="采购合同-1"><a href="#采购合同-1" class="headerlink" title="采购合同"></a>采购合同</h3><p>凭证类别（EKKO-BSTYP）等于K（合同）<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目</p>
-<h3 id="采购信息记录"><a href="#采购信息记录" class="headerlink" title="采购信息记录"></a>采购信息记录</h3><p>信息记录类别(EINE-ESOKZ)：0（标准）、 2（寄售）、3（分包合同）<br>EINA ，采购信息记录 - 一般数据<br>EINE ，采购信息记录 - 采购组织数据</p>
-<h3 id="采购申请"><a href="#采购申请" class="headerlink" title="采购申请"></a>采购申请</h3><p>EBAN，采购申请</p>
-<h3 id="采购订单"><a href="#采购订单" class="headerlink" title="采购订单"></a>采购订单</h3><p>凭证类别（EKKO-BSTYP）等于F（采购订单）<br>关键表：<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目<br>EKET，计划协议计划行<br>EKKN，采购凭证中的帐户设置</p>
-<h3 id="采购收货及发票校验"><a href="#采购收货及发票校验" class="headerlink" title="采购收货及发票校验"></a>采购收货及发票校验</h3><p>EKBE，采购凭证历史<br>如果需要得到某一采购订单行项目的累计入库数量，可直接使用EKET-WEMNG，不需要对物料移动数据进行累加。 （虽然SAP是允许同一采购订单行项目是允许多个交货计划（EKET），但我们实际上业务中只允许一个交货计划，很多开发和考核都是基于此）<br>RBKP，凭证表头：发票收据<br>RSEG，凭证项目：收款发票<br>通过发票凭证读取会计凭证建议使用函数AC_DOCUMENT_RECORD。</p>
-<h3 id="仓位主数据"><a href="#仓位主数据" class="headerlink" title="仓位主数据"></a>仓位主数据</h3><p>仓位必须跟仓库号、仓储类型一起才有意义，牢记“仓库号+仓储类型+仓位”！<br>关键表：<br>LAGP，仓位</p>
-<h3 id="库存数据"><a href="#库存数据" class="headerlink" title="库存数据"></a>库存数据</h3><p>IM库存数据（注意使用待H的数据）：<br>MARD，物料的仓储位置数据<br>MSLB，供应商特殊库存（o）<br>MKOL，供应商的特殊库存（k）<br>MSKA，销售订单库存<br>MCH1/MCHB，批次库存</p>
-<h3 id="WM库存数据："><a href="#WM库存数据：" class="headerlink" title="WM库存数据："></a>WM库存数据：</h3><p>LQUA，份（quants错误翻译为数量）</p>
-<h3 id="物料移动数据"><a href="#物料移动数据" class="headerlink" title="物料移动数据"></a>物料移动数据</h3><p>关键表：<br>MKPF，抬头：物料凭证<br>MSEG，凭证段:物料<br>不是所有的物料移动数据都需要从这物料移动表中进行读取。<br>生产订单相关 AUFM，采购订单相关 EKBE，销售相关 VBFA。</p>
-<h3 id="移动类型"><a href="#移动类型" class="headerlink" title="移动类型"></a>移动类型</h3><p>借贷标示：MSEG-SHKZG，S表示增加库存、H表示减少库存<br>关键表：<br>T156*，移动类型<br>T030，移动类型科目自动记账</p>
-<h3 id="WM的数据"><a href="#WM的数据" class="headerlink" title="WM的数据"></a>WM的数据</h3><p>关键表：<br>LTBK，转储请求抬头<br>LTBP，转储请求项目<br>LTAK，WM转储单抬头<br>LTAP，转储单项目</p>
-<h3 id="客户主数据"><a href="#客户主数据" class="headerlink" title="客户主数据"></a>客户主数据</h3><p>KNA1,   基础数据<br>KNB1，公司代码<br>KNVV，销售组织<br>ADRC，地址</p>
-<h3 id="销售价格"><a href="#销售价格" class="headerlink" title="销售价格"></a>销售价格</h3><p>根据条件类型（如PR01）查找存储顺序（如PR02），得到表（如A305等A*表）<br>KONP，条件记录号关联</p>
-<h3 id="销售合同（销售意向）"><a href="#销售合同（销售意向）" class="headerlink" title="销售合同（销售意向）"></a>销售合同（销售意向）</h3><p>凭证类别G（VBAK-VBTYP)<br>VBAK<br>VBAP</p>
-<h3 id="销售订单"><a href="#销售订单" class="headerlink" title="销售订单"></a>销售订单</h3><p>Vbak   :       销售凭证 ： 抬头数据<br>Vbap   :      销售凭证 ： 项目数据<br>Vbep  :      销售凭证:计划行数据<br>Vbkd  :      销售凭证 ： 业务数据<br>VBPA :      销售凭证 ： 合作伙伴</p>
-<h3 id="交货单"><a href="#交货单" class="headerlink" title="交货单"></a>交货单</h3><p>Likp<br>Lips</p>
-<h3 id="发票凭证"><a href="#发票凭证" class="headerlink" title="发票凭证"></a>发票凭证</h3><p>VBRK<br>VBRP</p>
-<h3 id="销售凭证流、凭证状态"><a href="#销售凭证流、凭证状态" class="headerlink" title="销售凭证流、凭证状态"></a>销售凭证流、凭证状态</h3><p>Vbfa<br>Vbuk<br>vbup</p>
-<h3 id="会计"><a href="#会计" class="headerlink" title="会计"></a>会计</h3><h4 id="会计科目主数据"><a href="#会计科目主数据" class="headerlink" title="会计科目主数据"></a>会计科目主数据</h4><p>SKA1，科目表<br>SKB1，公司代码<br>SKAT，科目描述</p>
-<h4 id="成本要素"><a href="#成本要素" class="headerlink" title="成本要素"></a>成本要素</h4><p>CSKB，成本要素</p>
-<h4 id="记账期间"><a href="#记账期间" class="headerlink" title="记账期间"></a>记账期间</h4><p>T001B<br>财务供应商、财务客户（同后勤模块，维护事务代码FK01，只有公司代码数据）</p>
-<h3 id="总账"><a href="#总账" class="headerlink" title="总账"></a>总账</h3><p>BKPF/BSEG<br>FAGLFLEXT<br>BSAS/BSIS<br>GLFUNCT，功能范围<br>AR/AP<br>BSAD/BSID<br>BSAK/BSIK<br>AM<br>ANLA<br>CO<br>CSKS,成本中心<br>COEP<br>COSS（计划/实际，通过WRTTP区分，期间通过字段区分，如WTG004）<br>COSP<br>CO-ML<br>CKMLHD<br>CKMLCR<br>CKMLPR<br>COPA<br>CE*，如CE18000，8000指使用的经营范围<br>CO与FI的区别及数据<br>SAP增强技术<br>用户出口（USER EXIT）<br>增强（ENHANCEMENT）<br>•  SMOD<br>•  CMOD<br>BADI<br>•       se18<br>•       se19<br> Enhancement Spot<br>•       ECC6.0后<br> 标准程序的修改（以CO02为例）<br>•       SE95查看</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/12/11/SAPTable/">
-    <time datetime="2017-12-11T08:43:37.029Z" class="entry-date">
-        2017-12-11
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/12/11/hello-world/">First On Blo</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/11/hello-world/" data-id="cjb4epjbg0002l0mihn21bsn8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/12/11/hello-world/">
-    <time datetime="2017-12-11T07:15:10.795Z" class="entry-date">
-        2017-12-11
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-  
-
-</div></div>
-        <div id="secondary" class="widget-area" role="complementary">
-  
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
-    </div>
-</form></aside>
-  
-    
-  
-    
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget-content">
-      <ul>
-        
-          <li>
-            <a href="/2017/12/12/SAP/">SAP</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/11/SAPTable/">SAP 常用表</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/11/hello-world/">First On Blo</a>
-          </li>
-        
-      </ul>
-    </div>
-  </aside>
-
-  
-    
-  
-    
-  
-</div>
-      </div>
-      <footer id="colophon" role="contentinfo">
-    <p>&copy; 2017 Liam
-    All rights reserved.</p>
-    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</footer>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-<script src="/js/jquery-2.0.3.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-<script src="/js/navigation.js"></script>
-
-<div id="bg"></div>
-
-  </div>
-</body>
-</html>
+  include _partial/paginator
+block pageOnly
+  script(type='text/javascript', src=url_for(theme.js) + '/totop.js' + '?v=' + theme.version, async)
+  if theme.comment.changyan.appid && theme.comment.changyan.appkey
+    script(id="cy_cmt_num", src='http://changyan.sohu.com/upload/plugins/plugins.list.count.js' + '?clientId=' + theme.comment.changyan.appid)
