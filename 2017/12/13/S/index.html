@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>S | Liam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。根据表的用途，需确定是否属于配置目的、还是业务目的。配置表的建议：需要加入MANDT字段例： “ZQJQD缺件清单”就没有MANDT字段需提供相应的维护视图； 部分关系梳理公司代码与工厂的关系一个工厂只能属于一个公司代码；例：3110起重机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="S">
+<meta property="og:url" content="http://yoursite.com/2017/12/13/S/index.html">
+<meta property="og:site_name" content="Liam">
+<meta property="og:description" content="表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。根据表的用途，需确定是否属于配置目的、还是业务目的。配置表的建议：需要加入MANDT字段例： “ZQJQD缺件清单”就没有MANDT字段需提供相应的维护视图； 部分关系梳理公司代码与工厂的关系一个工厂只能属于一个公司代码；例：3110起重机">
+<meta property="og:updated_time" content="2017-12-13T03:47:03.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="S">
+<meta name="twitter:description" content="表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。根据表的用途，需确定是否属于配置目的、还是业务目的。配置表的建议：需要加入MANDT字段例： “ZQJQD缺件清单”就没有MANDT字段需提供相应的维护视图； 部分关系梳理公司代码与工厂的关系一个工厂只能属于一个公司代码；例：3110起重机">
+  
+    <link rel="alternative" href="/atom.xml" title="Liam" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Liam</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">文章目录</a></li>
+                        
+                            <li><a href="/resume">个人履历</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/liamhacker" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://liamhacker.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Liam</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Liam</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">文章目录</a></li>
+                
+                    <li><a href="/resume">个人履历</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/liamhacker" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-S" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/13/S/" class="article-date">
+      <time datetime="2017-12-13T03:39:03.820Z" itemprop="datePublished">2017-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      S
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>表中使用的字段请尽量参照各模块的SAP字段标准使用习惯；<br>例：“ZXSLRZX销售组织对应的利润中心”中的销售组织应该使用VKORG、利润中心应该使用PRCTR。<br>根据表的用途，需确定是否属于配置目的、还是业务目的。<br>配置表的建议：<br>需要加入MANDT字段<br>例： “ZQJQD缺件清单”就没有MANDT字段<br>需提供相应的维护视图；</p>
+<h2 id="部分关系梳理"><a href="#部分关系梳理" class="headerlink" title="部分关系梳理"></a>部分关系梳理</h2><h3 id="公司代码与工厂的关系"><a href="#公司代码与工厂的关系" class="headerlink" title="公司代码与工厂的关系"></a>公司代码与工厂的关系</h3><p>一个工厂只能属于一个公司代码；<br>例：3110起重机工厂只能属于3011公司代码。<br>表：T001K，其中的BWKEY就是指工厂，完全等同于T001W的WERKS；</p>
+<h3 id="公司代码与利润中心的关系"><a href="#公司代码与利润中心的关系" class="headerlink" title="公司代码与利润中心的关系"></a>公司代码与利润中心的关系</h3><p>SAP是允许一个利润中心属于多个公司代码的，但是，我们实际业务上一个利润中心通常只应该对应一个公司代码（有部分特例！）<br>一个公司代码下，可以存在多个利润中心；<br>例：在2001公司代码下，存在LR2180/LR2170/LR2160等多个利润中心；<br>表：CEPC_BUKRS分配利润中心至公司代码</p>
+<h3 id="工厂与利润中心的关系"><a href="#工厂与利润中心的关系" class="headerlink" title="工厂与利润中心的关系"></a>工厂与利润中心的关系</h3><p>工厂跟利润中心按照SAP的本身逻辑是没有关系的；<br> 但为了保证业务的正确性，我们创建了表ZCHECK_MM01（工厂和利润中心的对应）来进行检查（如在物料主数据创建的时候进行检查）。</p>
+<h3 id="工厂与库存地点的关系"><a href="#工厂与库存地点的关系" class="headerlink" title="工厂与库存地点的关系"></a>工厂与库存地点的关系</h3><p>库存地点必须跟工厂一起才有意义，牢记“工厂+库存地点”！<br>在不同的工厂下虽然可以存在同样的库存地点代码，但本质上是有区别的；<br>T001L，工厂+库存地点</p>
+<h3 id="WM仓库与库存地点的关系"><a href="#WM仓库与库存地点的关系" class="headerlink" title="WM仓库与库存地点的关系"></a>WM仓库与库存地点的关系</h3><p>一个仓库可以包括多个“工厂+库存地点”，一个“工厂+库存地点”只能属于一个仓库；<br> T320，工厂+库存地点=&gt;仓库号</p>
+<h3 id="销售组织与公司代码的关系"><a href="#销售组织与公司代码的关系" class="headerlink" title="销售组织与公司代码的关系"></a>销售组织与公司代码的关系</h3><p>一个销售组织只能属于一个公司代码；<br>例：3011宁乡起重机销售组织只能属于3011公司代码。<br>表： TVKO销售组织；</p>
+<h3 id="采购组织与工厂的关系"><a href="#采购组织与工厂的关系" class="headerlink" title="采购组织与工厂的关系"></a>采购组织与工厂的关系</h3><p>采购组织与工厂是多对多的关系（但是如果采购组织已经分配给公司代码后，则只能分配该公司代码下的工厂给采购组织）<br>T024W工厂的有效采购组织<br>不能根据字段在前台所属的物料视图来确定相应的数据表，一定要使用F1-&gt;技术信息；<br>    例：采购视图的“采购价值代码”就是属于基本数据（MARA-EKWSL)。</p>
+<h2 id="SAP常用表"><a href="#SAP常用表" class="headerlink" title="SAP常用表"></a>SAP常用表</h2><h3 id="物料主数据的关键表："><a href="#物料主数据的关键表：" class="headerlink" title="物料主数据的关键表："></a>物料主数据的关键表：</h3><p>MARA，基本视图<br>MARC，工厂<br>MARD，工厂/库存地点<br>MBEW，财务数据，其中的MBEW-BWKEY就是指工厂MARC-WERKS<br>MVKE，销售组织/分销渠道<br>MLGN，仓库<br>MLGT，仓库/存储类型<br>MSTA，物料主数据维护状态</p>
+<h3 id="BOM主数据"><a href="#BOM主数据" class="headerlink" title="BOM主数据"></a>BOM主数据</h3><p>BOM用途：1表示生产<br>BOM类别：M表示物料BOM<br>MAST，BOM 链接物料<br>STKO，BOM表头<br>STPO，BOM 项目<br>STZU，永久 BOM 数据<br>STAS，BOMs - 项选择</p>
+<h3 id="工艺路线主数据"><a href="#工艺路线主数据" class="headerlink" title="工艺路线主数据"></a>工艺路线主数据</h3><p>任务清单类型：N表示工艺路线、Q表示检验计划<br>MAPL，分配任务清单到物料<br>PLKO，任务清单 - 表头<br>PLFL，任务清单 - 顺序<br>PLPO，任务清单 - 工序/作业<br>PLAS，任务清单 - 工序/作业选择<br>PLMZ，组件分配<br>CRHD，工作中心</p>
+<h3 id="独立需求"><a href="#独立需求" class="headerlink" title="独立需求"></a>独立需求</h3><p>PBIM，物料的独立需求<br>PBED，独立需求数据<br>PBID，独立需求数据（MRP区域）<br>PBHI ，独立需求历史记录</p>
+<h3 id="计划订单"><a href="#计划订单" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单，需注意计划工厂PLWRK、生产工厂PWWRK的区别；<br>RESB，预留表（通过PLAF-RSNUM与RESB-RSNUM关联）</p>
+<h3 id="生产订单"><a href="#生产订单" class="headerlink" title="生产订单"></a>生产订单</h3><p>订单类别： AUTYP，10表示生产订单<br>AUFK，订单主数据<br>  其中WERKS 工厂是指生产订单的生产工厂、 LOEKZ删除标记是对删除状态的生产订单生效（其他状态需通过JEST）进行读取。<br>AFKO，订单表头数据 PP 订单<br>  其中PLNBEZ 、STLBEZ并不一定是订单中产出物料（真正的物料应该是AFPO-MATNR）。<br>AFPO，订单项<br>  虽然关键字中存在POSNR，但实际上我们不存在co-product业务，所以POSNR都为0001.<br>AFVC,订单的工序(通过AFKO- AUFPL进行关联）<br>AFVV,工序中数量/日期/值的DB结构<br>AFFL，加工单顺序<br>JEST，订单状态（通过AUFK-OBJNR关联）<br> 其中STAT的具体含义通过TJ02T对应，注意当INACT=X时，表示该状态不存在。<br>RESB，预留表（通过AFKO-RSNUM与RESB-RSNUM关联）</p>
+<h3 id="报工-入库-发料"><a href="#报工-入库-发料" class="headerlink" title="报工/入库/发料"></a>报工/入库/发料</h3><p>AFRU，订单确认（AFRU-AUFNR为订单号）<br>AFFW，COGI错误（AFFW-AUFNR为订单号）<br>由于我们没有激活COGI更改历史，所以COGI的更改在AFFWPRO中是没有记录的，若有必要，可通过自定义备份表ZAFFWH进行查看。<br> AUFM，订单物料移动数据（AUFM-AUFNR为订单号）<br>该表的数据更新需依赖于PP的相关配置。此外，如果需要得到某一预留的累计发料数量，可直接使用RESB-ENMNG；如果需要得到某一订单的累计入库数量，可直接使用AFPO-WEMNG。均不需要对物料移动数据进行累加。</p>
+<h3 id="供应商主数据"><a href="#供应商主数据" class="headerlink" title="供应商主数据"></a>供应商主数据</h3><p>LFA1，集团数据<br>ADRC，地址信息<br>LFB1，公司代码数据<br>LFM1，采购组织数据</p>
+<h3 id="计划订单-1"><a href="#计划订单-1" class="headerlink" title="计划订单"></a>计划订单</h3><p>PLAF，计划订单；</p>
+<h3 id="采购合同"><a href="#采购合同" class="headerlink" title="采购合同"></a>采购合同</h3><p>PLAF，计划订单；</p>
+<h3 id="采购合同-1"><a href="#采购合同-1" class="headerlink" title="采购合同"></a>采购合同</h3><p>凭证类别（EKKO-BSTYP）等于K（合同）<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目</p>
+<h3 id="采购信息记录"><a href="#采购信息记录" class="headerlink" title="采购信息记录"></a>采购信息记录</h3><p>信息记录类别(EINE-ESOKZ)：0（标准）、 2（寄售）、3（分包合同）<br>EINA ，采购信息记录 - 一般数据<br>EINE ，采购信息记录 - 采购组织数据</p>
+<h3 id="采购申请"><a href="#采购申请" class="headerlink" title="采购申请"></a>采购申请</h3><p>EBAN，采购申请</p>
+<h3 id="采购订单"><a href="#采购订单" class="headerlink" title="采购订单"></a>采购订单</h3><p>凭证类别（EKKO-BSTYP）等于F（采购订单）<br>关键表：<br>EKKO，采购凭证抬头<br>EKPO，采购凭证项目<br>EKET，计划协议计划行<br>EKKN，采购凭证中的帐户设置</p>
+<h3 id="采购收货及发票校验"><a href="#采购收货及发票校验" class="headerlink" title="采购收货及发票校验"></a>采购收货及发票校验</h3><p>EKBE，采购凭证历史<br>如果需要得到某一采购订单行项目的累计入库数量，可直接使用EKET-WEMNG，不需要对物料移动数据进行累加。 （虽然SAP是允许同一采购订单行项目是允许多个交货计划（EKET），但我们实际上业务中只允许一个交货计划，很多开发和考核都是基于此）<br>RBKP，凭证表头：发票收据<br>RSEG，凭证项目：收款发票<br>通过发票凭证读取会计凭证建议使用函数AC_DOCUMENT_RECORD。</p>
+<h3 id="仓位主数据"><a href="#仓位主数据" class="headerlink" title="仓位主数据"></a>仓位主数据</h3><p>仓位必须跟仓库号、仓储类型一起才有意义，牢记“仓库号+仓储类型+仓位”！<br>关键表：<br>LAGP，仓位</p>
+<h3 id="库存数据"><a href="#库存数据" class="headerlink" title="库存数据"></a>库存数据</h3><p>IM库存数据（注意使用待H的数据）：<br>MARD，物料的仓储位置数据<br>MSLB，供应商特殊库存（o）<br>MKOL，供应商的特殊库存（k）<br>MSKA，销售订单库存<br>MCH1/MCHB，批次库存</p>
+<h3 id="WM库存数据："><a href="#WM库存数据：" class="headerlink" title="WM库存数据："></a>WM库存数据：</h3><p>LQUA，份（quants错误翻译为数量）</p>
+<h3 id="物料移动数据"><a href="#物料移动数据" class="headerlink" title="物料移动数据"></a>物料移动数据</h3><p>关键表：<br>MKPF，抬头：物料凭证<br>MSEG，凭证段:物料<br>不是所有的物料移动数据都需要从这物料移动表中进行读取。<br>生产订单相关 AUFM，采购订单相关 EKBE，销售相关 VBFA。</p>
+<h3 id="移动类型"><a href="#移动类型" class="headerlink" title="移动类型"></a>移动类型</h3><p>借贷标示：MSEG-SHKZG，S表示增加库存、H表示减少库存<br>关键表：<br>T156*，移动类型<br>T030，移动类型科目自动记账</p>
+<h3 id="WM的数据"><a href="#WM的数据" class="headerlink" title="WM的数据"></a>WM的数据</h3><p>关键表：<br>LTBK，转储请求抬头<br>LTBP，转储请求项目<br>LTAK，WM转储单抬头<br>LTAP，转储单项目</p>
+<h3 id="客户主数据"><a href="#客户主数据" class="headerlink" title="客户主数据"></a>客户主数据</h3><p>KNA1,   基础数据<br>KNB1，公司代码<br>KNVV，销售组织<br>ADRC，地址</p>
+<h3 id="销售价格"><a href="#销售价格" class="headerlink" title="销售价格"></a>销售价格</h3><p>根据条件类型（如PR01）查找存储顺序（如PR02），得到表（如A305等A*表）<br>KONP，条件记录号关联</p>
+<h3 id="销售合同（销售意向）"><a href="#销售合同（销售意向）" class="headerlink" title="销售合同（销售意向）"></a>销售合同（销售意向）</h3><p>凭证类别G（VBAK-VBTYP)<br>VBAK<br>VBAP</p>
+<h3 id="销售订单"><a href="#销售订单" class="headerlink" title="销售订单"></a>销售订单</h3><p>Vbak   :       销售凭证 ： 抬头数据<br>Vbap   :      销售凭证 ： 项目数据<br>Vbep  :      销售凭证:计划行数据<br>Vbkd  :      销售凭证 ： 业务数据<br>VBPA :      销售凭证 ： 合作伙伴</p>
+<h3 id="交货单"><a href="#交货单" class="headerlink" title="交货单"></a>交货单</h3><p>Likp<br>Lips</p>
+<h3 id="发票凭证"><a href="#发票凭证" class="headerlink" title="发票凭证"></a>发票凭证</h3><p>VBRK<br>VBRP</p>
+<h3 id="销售凭证流、凭证状态"><a href="#销售凭证流、凭证状态" class="headerlink" title="销售凭证流、凭证状态"></a>销售凭证流、凭证状态</h3><p>Vbfa<br>Vbuk<br>vbup</p>
+<h3 id="会计"><a href="#会计" class="headerlink" title="会计"></a>会计</h3><h4 id="会计科目主数据"><a href="#会计科目主数据" class="headerlink" title="会计科目主数据"></a>会计科目主数据</h4><p>SKA1，科目表<br>SKB1，公司代码<br>SKAT，科目描述</p>
+<h4 id="成本要素"><a href="#成本要素" class="headerlink" title="成本要素"></a>成本要素</h4><p>CSKB，成本要素</p>
+<h4 id="记账期间"><a href="#记账期间" class="headerlink" title="记账期间"></a>记账期间</h4><p>T001B<br>财务供应商、财务客户（同后勤模块，维护事务代码FK01，只有公司代码数据）</p>
+<h3 id="总账"><a href="#总账" class="headerlink" title="总账"></a>总账</h3><p>BKPF/BSEG<br>FAGLFLEXT<br>BSAS/BSIS<br>GLFUNCT，功能范围<br>AR/AP<br>BSAD/BSID<br>BSAK/BSIK<br>AM<br>ANLA<br>CO<br>CSKS,成本中心<br>COEP<br>COSS（计划/实际，通过WRTTP区分，期间通过字段区分，如WTG004）<br>COSP<br>CO-ML<br>CKMLHD<br>CKMLCR<br>CKMLPR<br>COPA<br>CE*，如CE18000，8000指使用的经营范围<br>CO与FI的区别及数据<br>SAP增强技术<br>用户出口（USER EXIT）<br>增强（ENHANCEMENT）<br>•  SMOD<br>•  CMOD<br>BADI<br>•       se18<br>•       se19<br> Enhancement Spot<br>•       ECC6.0后<br> 标准程序的修改（以CO02为例）<br>•       SE95查看</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/12/13/S/">S</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Liam 的个人博客">Liam</a></p>
+        <p><span>发布时间:</span>2017年12月13日 - 11时39分</p>
+        <p><span>最后更新:</span>2017年12月13日 - 11时47分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/13/S/" title="S">http://yoursite.com/2017/12/13/S/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/12/13/S/　　作者: Liam" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/12/SAP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SAP</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#部分关系梳理"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x90E8;&#x5206;&#x5173;&#x7CFB;&#x68B3;&#x7406;" class="headerlink" title="&#x90E8;&#x5206;&#x5173;&#x7CFB;&#x68B3;&#x7406;"></a>&#x90E8;&#x5206;&#x5173;&#x7CFB;&#x68B3;&#x7406;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公司代码与工厂的关系"><span class="toc-number">1.1.</span> <span class="toc-text"><a href="#&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;"></a>&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公司代码与利润中心的关系"><span class="toc-number">1.2.</span> <span class="toc-text"><a href="#&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;"></a>&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂与利润中心的关系"><span class="toc-number">1.3.</span> <span class="toc-text"><a href="#&#x5DE5;&#x5382;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x5DE5;&#x5382;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;"></a>&#x5DE5;&#x5382;&#x4E0E;&#x5229;&#x6DA6;&#x4E2D;&#x5FC3;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂与库存地点的关系"><span class="toc-number">1.4.</span> <span class="toc-text"><a href="#&#x5DE5;&#x5382;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x5DE5;&#x5382;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;"></a>&#x5DE5;&#x5382;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WM仓库与库存地点的关系"><span class="toc-number">1.5.</span> <span class="toc-text"><a href="#WM&#x4ED3;&#x5E93;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="WM&#x4ED3;&#x5E93;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;"></a>WM&#x4ED3;&#x5E93;&#x4E0E;&#x5E93;&#x5B58;&#x5730;&#x70B9;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#销售组织与公司代码的关系"><span class="toc-number">1.6.</span> <span class="toc-text"><a href="#&#x9500;&#x552E;&#x7EC4;&#x7EC7;&#x4E0E;&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x9500;&#x552E;&#x7EC4;&#x7EC7;&#x4E0E;&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x7684;&#x5173;&#x7CFB;"></a>&#x9500;&#x552E;&#x7EC4;&#x7EC7;&#x4E0E;&#x516C;&#x53F8;&#x4EE3;&#x7801;&#x7684;&#x5173;&#x7CFB;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购组织与工厂的关系"><span class="toc-number">1.7.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x7EC4;&#x7EC7;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;" class="headerlink" title="&#x91C7;&#x8D2D;&#x7EC4;&#x7EC7;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;"></a>&#x91C7;&#x8D2D;&#x7EC4;&#x7EC7;&#x4E0E;&#x5DE5;&#x5382;&#x7684;&#x5173;&#x7CFB;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SAP常用表"><span class="toc-number">2.</span> <span class="toc-text"><a href="#SAP&#x5E38;&#x7528;&#x8868;" class="headerlink" title="SAP&#x5E38;&#x7528;&#x8868;"></a>SAP&#x5E38;&#x7528;&#x8868;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物料主数据的关键表："><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x7269;&#x6599;&#x4E3B;&#x6570;&#x636E;&#x7684;&#x5173;&#x952E;&#x8868;&#xFF1A;" class="headerlink" title="&#x7269;&#x6599;&#x4E3B;&#x6570;&#x636E;&#x7684;&#x5173;&#x952E;&#x8868;&#xFF1A;"></a>&#x7269;&#x6599;&#x4E3B;&#x6570;&#x636E;&#x7684;&#x5173;&#x952E;&#x8868;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM主数据"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#BOM&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="BOM&#x4E3B;&#x6570;&#x636E;"></a>BOM&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工艺路线主数据"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x5DE5;&#x827A;&#x8DEF;&#x7EBF;&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="&#x5DE5;&#x827A;&#x8DEF;&#x7EBF;&#x4E3B;&#x6570;&#x636E;"></a>&#x5DE5;&#x827A;&#x8DEF;&#x7EBF;&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立需求"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x72EC;&#x7ACB;&#x9700;&#x6C42;" class="headerlink" title="&#x72EC;&#x7ACB;&#x9700;&#x6C42;"></a>&#x72EC;&#x7ACB;&#x9700;&#x6C42;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计划订单"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x8BA1;&#x5212;&#x8BA2;&#x5355;" class="headerlink" title="&#x8BA1;&#x5212;&#x8BA2;&#x5355;"></a>&#x8BA1;&#x5212;&#x8BA2;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生产订单"><span class="toc-number">2.6.</span> <span class="toc-text"><a href="#&#x751F;&#x4EA7;&#x8BA2;&#x5355;" class="headerlink" title="&#x751F;&#x4EA7;&#x8BA2;&#x5355;"></a>&#x751F;&#x4EA7;&#x8BA2;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#报工-入库-发料"><span class="toc-number">2.7.</span> <span class="toc-text"><a href="#&#x62A5;&#x5DE5;-&#x5165;&#x5E93;-&#x53D1;&#x6599;" class="headerlink" title="&#x62A5;&#x5DE5;/&#x5165;&#x5E93;/&#x53D1;&#x6599;"></a>&#x62A5;&#x5DE5;/&#x5165;&#x5E93;/&#x53D1;&#x6599;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#供应商主数据"><span class="toc-number">2.8.</span> <span class="toc-text"><a href="#&#x4F9B;&#x5E94;&#x5546;&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="&#x4F9B;&#x5E94;&#x5546;&#x4E3B;&#x6570;&#x636E;"></a>&#x4F9B;&#x5E94;&#x5546;&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计划订单-1"><span class="toc-number">2.9.</span> <span class="toc-text"><a href="#&#x8BA1;&#x5212;&#x8BA2;&#x5355;-1" class="headerlink" title="&#x8BA1;&#x5212;&#x8BA2;&#x5355;"></a>&#x8BA1;&#x5212;&#x8BA2;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购合同"><span class="toc-number">2.10.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x5408;&#x540C;" class="headerlink" title="&#x91C7;&#x8D2D;&#x5408;&#x540C;"></a>&#x91C7;&#x8D2D;&#x5408;&#x540C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购合同-1"><span class="toc-number">2.11.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x5408;&#x540C;-1" class="headerlink" title="&#x91C7;&#x8D2D;&#x5408;&#x540C;"></a>&#x91C7;&#x8D2D;&#x5408;&#x540C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购信息记录"><span class="toc-number">2.12.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;" class="headerlink" title="&#x91C7;&#x8D2D;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;"></a>&#x91C7;&#x8D2D;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购申请"><span class="toc-number">2.13.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x7533;&#x8BF7;" class="headerlink" title="&#x91C7;&#x8D2D;&#x7533;&#x8BF7;"></a>&#x91C7;&#x8D2D;&#x7533;&#x8BF7;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购订单"><span class="toc-number">2.14.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x8BA2;&#x5355;" class="headerlink" title="&#x91C7;&#x8D2D;&#x8BA2;&#x5355;"></a>&#x91C7;&#x8D2D;&#x8BA2;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采购收货及发票校验"><span class="toc-number">2.15.</span> <span class="toc-text"><a href="#&#x91C7;&#x8D2D;&#x6536;&#x8D27;&#x53CA;&#x53D1;&#x7968;&#x6821;&#x9A8C;" class="headerlink" title="&#x91C7;&#x8D2D;&#x6536;&#x8D27;&#x53CA;&#x53D1;&#x7968;&#x6821;&#x9A8C;"></a>&#x91C7;&#x8D2D;&#x6536;&#x8D27;&#x53CA;&#x53D1;&#x7968;&#x6821;&#x9A8C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓位主数据"><span class="toc-number">2.16.</span> <span class="toc-text"><a href="#&#x4ED3;&#x4F4D;&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="&#x4ED3;&#x4F4D;&#x4E3B;&#x6570;&#x636E;"></a>&#x4ED3;&#x4F4D;&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#库存数据"><span class="toc-number">2.17.</span> <span class="toc-text"><a href="#&#x5E93;&#x5B58;&#x6570;&#x636E;" class="headerlink" title="&#x5E93;&#x5B58;&#x6570;&#x636E;"></a>&#x5E93;&#x5B58;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WM库存数据："><span class="toc-number">2.18.</span> <span class="toc-text"><a href="#WM&#x5E93;&#x5B58;&#x6570;&#x636E;&#xFF1A;" class="headerlink" title="WM&#x5E93;&#x5B58;&#x6570;&#x636E;&#xFF1A;"></a>WM&#x5E93;&#x5B58;&#x6570;&#x636E;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物料移动数据"><span class="toc-number">2.19.</span> <span class="toc-text"><a href="#&#x7269;&#x6599;&#x79FB;&#x52A8;&#x6570;&#x636E;" class="headerlink" title="&#x7269;&#x6599;&#x79FB;&#x52A8;&#x6570;&#x636E;"></a>&#x7269;&#x6599;&#x79FB;&#x52A8;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动类型"><span class="toc-number">2.20.</span> <span class="toc-text"><a href="#&#x79FB;&#x52A8;&#x7C7B;&#x578B;" class="headerlink" title="&#x79FB;&#x52A8;&#x7C7B;&#x578B;"></a>&#x79FB;&#x52A8;&#x7C7B;&#x578B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WM的数据"><span class="toc-number">2.21.</span> <span class="toc-text"><a href="#WM&#x7684;&#x6570;&#x636E;" class="headerlink" title="WM&#x7684;&#x6570;&#x636E;"></a>WM&#x7684;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户主数据"><span class="toc-number">2.22.</span> <span class="toc-text"><a href="#&#x5BA2;&#x6237;&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="&#x5BA2;&#x6237;&#x4E3B;&#x6570;&#x636E;"></a>&#x5BA2;&#x6237;&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#销售价格"><span class="toc-number">2.23.</span> <span class="toc-text"><a href="#&#x9500;&#x552E;&#x4EF7;&#x683C;" class="headerlink" title="&#x9500;&#x552E;&#x4EF7;&#x683C;"></a>&#x9500;&#x552E;&#x4EF7;&#x683C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#销售合同（销售意向）"><span class="toc-number">2.24.</span> <span class="toc-text"><a href="#&#x9500;&#x552E;&#x5408;&#x540C;&#xFF08;&#x9500;&#x552E;&#x610F;&#x5411;&#xFF09;" class="headerlink" title="&#x9500;&#x552E;&#x5408;&#x540C;&#xFF08;&#x9500;&#x552E;&#x610F;&#x5411;&#xFF09;"></a>&#x9500;&#x552E;&#x5408;&#x540C;&#xFF08;&#x9500;&#x552E;&#x610F;&#x5411;&#xFF09;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#销售订单"><span class="toc-number">2.25.</span> <span class="toc-text"><a href="#&#x9500;&#x552E;&#x8BA2;&#x5355;" class="headerlink" title="&#x9500;&#x552E;&#x8BA2;&#x5355;"></a>&#x9500;&#x552E;&#x8BA2;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交货单"><span class="toc-number">2.26.</span> <span class="toc-text"><a href="#&#x4EA4;&#x8D27;&#x5355;" class="headerlink" title="&#x4EA4;&#x8D27;&#x5355;"></a>&#x4EA4;&#x8D27;&#x5355;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发票凭证"><span class="toc-number">2.27.</span> <span class="toc-text"><a href="#&#x53D1;&#x7968;&#x51ED;&#x8BC1;" class="headerlink" title="&#x53D1;&#x7968;&#x51ED;&#x8BC1;"></a>&#x53D1;&#x7968;&#x51ED;&#x8BC1;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#销售凭证流、凭证状态"><span class="toc-number">2.28.</span> <span class="toc-text"><a href="#&#x9500;&#x552E;&#x51ED;&#x8BC1;&#x6D41;&#x3001;&#x51ED;&#x8BC1;&#x72B6;&#x6001;" class="headerlink" title="&#x9500;&#x552E;&#x51ED;&#x8BC1;&#x6D41;&#x3001;&#x51ED;&#x8BC1;&#x72B6;&#x6001;"></a>&#x9500;&#x552E;&#x51ED;&#x8BC1;&#x6D41;&#x3001;&#x51ED;&#x8BC1;&#x72B6;&#x6001;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会计"><span class="toc-number">2.29.</span> <span class="toc-text"><a href="#&#x4F1A;&#x8BA1;" class="headerlink" title="&#x4F1A;&#x8BA1;"></a>&#x4F1A;&#x8BA1;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#会计科目主数据"><span class="toc-number">2.29.1.</span> <span class="toc-text"><a href="#&#x4F1A;&#x8BA1;&#x79D1;&#x76EE;&#x4E3B;&#x6570;&#x636E;" class="headerlink" title="&#x4F1A;&#x8BA1;&#x79D1;&#x76EE;&#x4E3B;&#x6570;&#x636E;"></a>&#x4F1A;&#x8BA1;&#x79D1;&#x76EE;&#x4E3B;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#成本要素"><span class="toc-number">2.29.2.</span> <span class="toc-text"><a href="#&#x6210;&#x672C;&#x8981;&#x7D20;" class="headerlink" title="&#x6210;&#x672C;&#x8981;&#x7D20;"></a>&#x6210;&#x672C;&#x8981;&#x7D20;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记账期间"><span class="toc-number">2.29.3.</span> <span class="toc-text"><a href="#&#x8BB0;&#x8D26;&#x671F;&#x95F4;" class="headerlink" title="&#x8BB0;&#x8D26;&#x671F;&#x95F4;"></a>&#x8BB0;&#x8D26;&#x671F;&#x95F4;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总账"><span class="toc-number">2.30.</span> <span class="toc-text"><a href="#&#x603B;&#x8D26;" class="headerlink" title="&#x603B;&#x8D26;"></a>&#x603B;&#x8D26;</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'liamhacker',
+      repo: 'liamhacker.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/12/12/SAP/" title="下一篇: SAP">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/S/">S</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/12/SAP/">SAP</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/11/SAPTable/">SAP 常用表</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/11/hello-world/">First On Blo</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Liam
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
