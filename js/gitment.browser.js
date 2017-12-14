@@ -3366,7 +3366,8 @@ var Gitment = function () {
       desc: '',
       labels: [],
       theme: _default2.default,
-      oauth: {},
+      oauth: { client_id: '0dc23c9f5e3d94417d39',
+        client_secret: '0a3a859e7d4ad6e0d4ea348416742e0d3325613e',},
       perPage: 20,
       maxCommentHeight: 250
     }, options);
