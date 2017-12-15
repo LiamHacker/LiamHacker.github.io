@@ -123,6 +123,8 @@
                         
                             <li><a href="/abap">ABAP开发</a></li>
                         
+                            <li><a href="/java">JAVA开发</a></li>
+                        
                         </ul>
                     </nav>
                     <nav class="header-nav">
@@ -206,6 +208,8 @@
                 
                     <li><a href="/abap">ABAP开发</a></li>
                 
+                    <li><a href="/java">JAVA开发</a></li>
+                
                 <div class="clearfix"></div>
                 </ul>
             </nav>
@@ -232,6 +236,64 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-SAP-CJTable" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/15/SAP-CJTable/" class="article-date">
+      <time datetime="2017-12-15T03:37:02.656Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/SAP-CJTable/">SAP创建自建表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>T-code:SE11 输入数据库表名称，命名规则Z<strong>T*</strong>，然后点击创建，若存在表则会提示表已存在。<br><img src="/img/sap/sap-cjtable/sap-cjtable-01.png" alt="Alt text"><br>创建后，则填入必填字段，‘描述’、‘交付类’，交付类一般选择A-应用表，表视图取系统默认。<br><img src="/img/sap/sap-cjtable/sap-cjtable-02.png" alt="Alt text"><br>选择字段，填入字段和数据元素后按回车，若出现下图情况则需创建数据元素<br><img src="/img/sap/sap-cjtable/sap-cjtable-03.png" alt="Alt text"></p>
+<p></p><h3>创建数据元素</h3><br><img src="/img/sap/sap-cjtable/sap-cjtable-04.png" alt="Alt text"><br><img src="/img/sap/sap-cjtable/sap-cjtable-05.png" alt="Alt text"><br>填入描述，基本类型选择预定义类型，按需求选择数据类型和设置长度<img src="/img/sap/sap-cjtable/sap-cjtable-06.png" alt="Alt text"><br>点开字段标签，输入长度和字段标签，该用处会体现在显示的时候<br><img src="/img/sap/sap-cjtable/sap-cjtable-07.png" alt="Alt text"><br>点击保存按钮，根据否需要传输而选择，保存方式，该处需要传输，所以填入存放的包，不传输则不需要填入包<br><img src="/img/sap/sap-cjtable/sap-cjtable-08.png" alt="Alt text"><br>需要传输就需要创建请求号了，这时候系统会自动带出上一个请求，如果与上个请求无关，则点击下图框起的地方创建，这里不再创建请求。<br><img src="/img/sap/sap-cjtable/1513310861654.png" alt="Alt text"><p></p>
+<p></p><h3>创建完数据元素后</h3><br>再回到创建透明表的程序，重新输入数据元素按回车，这个时候你会看到带出来的描述了<br><img src="/img/sap/sap-cjtable/sap-cjtable-09.png" alt="Alt text"><p></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在创建透明表的时候必须添加mandt这个字段，并且设为主键<br>检查和激活时会有警告提示，这时可以忽略。激活后弹出技术支持，根据需求选择相应数据类和大小类别。<br><img src="/img/sap/sap-cjtable/sap-cjtable-11.png" alt="Alt text"><br>检查和激活时会有警告提示，这时可以忽略。<br><img src="/img/sap/sap-cjtable/sap-cjtable-10.png" alt="Alt text"><br>激活后，选择是否放入包中传输，就意味着创建透明表成功了！！</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CPJSBZRrport" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -317,14 +379,14 @@
         <h2 id="域名IP配置"><a href="#域名IP配置" class="headerlink" title="域名IP配置"></a>域名IP配置</h2><p>首先维护HOST文件，将IP与域名关联起来，本机进入下面路径</p>
 <h3 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h3><pre><code>C:\Windows\System32\drivers\etc
 </code></pre><h3 id="MAC系统"><a href="#MAC系统" class="headerlink" title="MAC系统"></a>MAC系统</h3><pre><code>/private/etc/
-</code></pre><p> <img src="/img/sap/SAP-PI-1.png" alt="Alt text"><br>在打开文件，在文件中添加如下配置：</p>
+</code></pre><p> <img src="/img/sap/sap-pi/SAP-PI-1.png" alt="Alt text"><br>在打开文件，在文件中添加如下配置：</p>
 <pre><code>#PO
   192.168.1.201    podev1.eg.cn
   192.168.1.202    poqas1.eg.cn
   192.168.1.200    poprd1.eg.cn
-</code></pre><p><img src="/img/sap/SAP-PI-2.png" alt="Alt text"><br>恭喜你配置完本地域名了！当然你也可以用IP和端口访问，具体这里不讲述！</p>
+</code></pre><p><img src="/img/sap/sap-pi/SAP-PI-2.png" alt="Alt text"><br>恭喜你配置完本地域名了！当然你也可以用IP和端口访问，具体这里不讲述！</p>
 <h2 id="PI日志查询"><a href="#PI日志查询" class="headerlink" title="PI日志查询"></a>PI日志查询</h2><hr>
-<p>在浏览器中输入：<a href="http://poprd1.eg.cn:50000/dir" target="_blank" rel="noopener">http://poprd1.eg.cn:50000/dir</a> 进入如下界面<br><img src="/img/sap/SAP-PI-3.png" alt="Alt text"><br>点击上图，红色框中的链接，进入到如下图的登录界面。<br><img src="/img/sap/SAP-PI-4.png" alt="Alt text"><br>登录后进入到监控主页，如下图,点击下图“适配器引擎”<br><img src="/img/sap/SAP-PI-5.png" alt="Alt text"><br>点击下图红色框中的链接<br><img src="/img/sap/SAP-PI-6.png" alt="Alt text"><br>进入到消息监控器：监控消息<br>显示界面如下图所示：<br><img src="/img/sap/SAP-PI-7.png" alt="Alt text"><br>将窗口移到最右边，点击入下图所示筛选按钮。<br><img src="/img/sap/SAP-PI-8.png" alt="Alt text"><br>在场景标识符中输入：<em>接口函数</em>，*匹配所有条件,按回车查询制定接口信息<br><img src="/img/sap/SAP-PI-9.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-10.png" alt="Alt text"><br>注意：如下图所示时间为调用接口的时间，选择制定时间<br><img src="/img/sap/SAP-PI-11.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-12.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-13.png" alt="Alt text"><br>出现浏览器拦截情况，按下图去操作。<br><img src="/img/sap/SAP-PI-14.png" alt="Alt text"><br>打开消息后会显示如下图所示的有效负载区，可以查询到外围系统所传的查询的条件。<br><img src="/img/sap/SAP-PI-15.png" alt="Alt text"><br>然后到sap系统中，事务码：se37  输入接口函数名，再输入外围系统的查询条件，执行<br><img src="/img/sap/SAP-PI-16.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-17.png" alt="Alt text"><br>将会获取到查询的结果集，点击结果集数据显示所有明细<br><img src="/img/sap/SAP-PI-18.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-19.png" alt="Alt text"><br>再到po中查询，sap回传的结果集，下载到本地，与sap所查询的结果进行匹配，排查数据是否一致。<br><img src="/img/sap/SAP-PI-20.png" alt="Alt text"><br><img src="/img/sap/SAP-PI-21.png" alt="Alt text"><br>失败记录重发<br><img src="/img/sap/SAP-PI-22.png" alt="Alt text"><br>点击上图圈中地方,跳转如下图页面，往下拖，点击一条记录，将会显示详细的信息，即可查看问题所在<br><img src="/img/sap/SAP-PI-23.png" alt="Alt text"><br>点击下图中“口”图标，点击全选后，按重新发送即可。<br><img src="/img/sap/SAP-PI-24.png" alt="Alt text"><br>谢谢！</p>
+<p>在浏览器中输入：<a href="http://poprd1.eg.cn:50000/dir" target="_blank" rel="noopener">http://poprd1.eg.cn:50000/dir</a> 进入如下界面<br><img src="/img/sap/sap-pi/SAP-PI-3.png" alt="Alt text"><br>点击上图，红色框中的链接，进入到如下图的登录界面。<br><img src="/img/sap/sap-pi/SAP-PI-4.png" alt="Alt text"><br>登录后进入到监控主页，如下图,点击下图“适配器引擎”<br><img src="/img/sap/sap-pi/SAP-PI-5.png" alt="Alt text"><br>点击下图红色框中的链接<br><img src="/img/sap/sap-pi/SAP-PI-6.png" alt="Alt text"><br>进入到消息监控器：监控消息<br>显示界面如下图所示：<br><img src="/img/sap/sap-pi/SAP-PI-7.png" alt="Alt text"><br>将窗口移到最右边，点击入下图所示筛选按钮。<br><img src="/img/sap/sap-pi/SAP-PI-8.png" alt="Alt text"><br>在场景标识符中输入：<em>接口函数</em>，*匹配所有条件,按回车查询制定接口信息<br><img src="/img/sap/sap-pi/SAP-PI-9.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-10.png" alt="Alt text"><br>注意：如下图所示时间为调用接口的时间，选择制定时间<br><img src="/img/sap/sap-pi/SAP-PI-11.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-12.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-13.png" alt="Alt text"><br>出现浏览器拦截情况，按下图去操作。<br><img src="/img/sap/sap-pi/SAP-PI-14.png" alt="Alt text"><br>打开消息后会显示如下图所示的有效负载区，可以查询到外围系统所传的查询的条件。<br><img src="/img/sap/sap-pi/SAP-PI-15.png" alt="Alt text"><br>然后到sap系统中，事务码：se37  输入接口函数名，再输入外围系统的查询条件，执行<br><img src="/img/sap/sap-pi/SAP-PI-16.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-17.png" alt="Alt text"><br>将会获取到查询的结果集，点击结果集数据显示所有明细<br><img src="/img/sap/sap-pi/SAP-PI-18.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-19.png" alt="Alt text"><br>再到po中查询，sap回传的结果集，下载到本地，与sap所查询的结果进行匹配，排查数据是否一致。<br><img src="/img/sap/sap-pi/SAP-PI-20.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-21.png" alt="Alt text"><br>失败记录重发<br><img src="/img/sap/sap-pi/SAP-PI-22.png" alt="Alt text"><br>点击上图圈中地方,跳转如下图页面，往下拖，点击一条记录，将会显示详细的信息，即可查看问题所在<br><img src="/img/sap/sap-pi/SAP-PI-23.png" alt="Alt text"><br>点击下图中“口”图标，点击全选后，按重新发送即可。<br><img src="/img/sap/sap-pi/SAP-PI-24.png" alt="Alt text"><br>谢谢！</p>
 
       
       
