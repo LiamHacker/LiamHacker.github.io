@@ -3,43 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>SAP-PI 日志查询 | Liam</title>
+  <title>MIGO-QM检验批增强 | Liam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="域名IP配置首先维护HOST文件，将IP与域名关联起来，本机进入下面路径 Windows系统C:\Windows\System32\drivers\etc MAC系统/private/etc/  在打开文件，在文件中添加如下配置： #PO   192.168.1.201    podev1.eg.cn   192.168.1.202    poqas1.eg.cn   192.168.1.200">
+  <meta name="description" content="废话不多说，直接进入主题在这里，我把MIGO比作成接口一样，有发送方和接收方！MIGO中过账按钮则为理解为发送按钮，写入检验批QALS表中。 对于发送方T-CODE:SE19  在典型业务加强项上填写：ZMB_MIGO_ITEM_BADI，显示后进入到接口，双击方法名，进入代码模式这里不再多说，直接上代码：1234567891011121314151617181920212223242526272">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SAP-PI 日志查询">
-<meta property="og:url" content="http://yoursite.com/2017/12/12/SAP-PI/index.html">
+<meta property="og:title" content="MIGO-QM检验批增强">
+<meta property="og:url" content="http://yoursite.com/2017/12/15/SAP-QALSZQ/index.html">
 <meta property="og:site_name" content="Liam">
-<meta property="og:description" content="域名IP配置首先维护HOST文件，将IP与域名关联起来，本机进入下面路径 Windows系统C:\Windows\System32\drivers\etc MAC系统/private/etc/  在打开文件，在文件中添加如下配置： #PO   192.168.1.201    podev1.eg.cn   192.168.1.202    poqas1.eg.cn   192.168.1.200">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-1.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-2.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-3.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-4.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-5.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-6.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-7.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-8.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-9.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-10.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-11.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-12.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-13.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-14.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-15.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-16.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-17.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-18.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-19.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-20.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-21.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-22.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-23.png">
-<meta property="og:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-24.png">
-<meta property="og:updated_time" content="2017-12-15T03:27:47.167Z">
+<meta property="og:description" content="废话不多说，直接进入主题在这里，我把MIGO比作成接口一样，有发送方和接收方！MIGO中过账按钮则为理解为发送按钮，写入检验批QALS表中。 对于发送方T-CODE:SE19  在典型业务加强项上填写：ZMB_MIGO_ITEM_BADI，显示后进入到接口，双击方法名，进入代码模式这里不再多说，直接上代码：1234567891011121314151617181920212223242526272">
+<meta property="og:updated_time" content="2017-12-15T11:03:54.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SAP-PI 日志查询">
-<meta name="twitter:description" content="域名IP配置首先维护HOST文件，将IP与域名关联起来，本机进入下面路径 Windows系统C:\Windows\System32\drivers\etc MAC系统/private/etc/  在打开文件，在文件中添加如下配置： #PO   192.168.1.201    podev1.eg.cn   192.168.1.202    poqas1.eg.cn   192.168.1.200">
-<meta name="twitter:image" content="http://yoursite.com/img/sap/sap-pi/SAP-PI-1.png">
+<meta name="twitter:title" content="MIGO-QM检验批增强">
+<meta name="twitter:description" content="废话不多说，直接进入主题在这里，我把MIGO比作成接口一样，有发送方和接收方！MIGO中过账按钮则为理解为发送按钮，写入检验批QALS表中。 对于发送方T-CODE:SE19  在典型业务加强项上填写：ZMB_MIGO_ITEM_BADI，显示后进入到接口，双击方法名，进入代码模式这里不再多说，直接上代码：1234567891011121314151617181920212223242526272">
   
     <link rel="alternative" href="/atom.xml" title="Liam" type="application/atom+xml">
   
@@ -261,11 +236,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-SAP-PI" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SAP-QALSZQ" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/12/SAP-PI/" class="article-date">
-      <time datetime="2017-12-12T01:45:57.630Z" itemprop="datePublished">2017-12-12</time>
+      <a href="/2017/12/15/SAP-QALSZQ/" class="article-date">
+      <time datetime="2017-12-15T11:02:42.474Z" itemprop="datePublished">2017-12-15</time>
 </a>
     </div>
   
@@ -278,7 +253,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SAP-PI 日志查询
+      MIGO-QM检验批增强
     </h1>
   
 
@@ -295,17 +270,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="域名IP配置"><a href="#域名IP配置" class="headerlink" title="域名IP配置"></a>域名IP配置</h2><p>首先维护HOST文件，将IP与域名关联起来，本机进入下面路径</p>
-<h3 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h3><pre><code>C:\Windows\System32\drivers\etc
-</code></pre><h3 id="MAC系统"><a href="#MAC系统" class="headerlink" title="MAC系统"></a>MAC系统</h3><pre><code>/private/etc/
-</code></pre><p> <img src="/img/sap/sap-pi/SAP-PI-1.png" alt="Alt text"><br>在打开文件，在文件中添加如下配置：</p>
-<pre><code>#PO
-  192.168.1.201    podev1.eg.cn
-  192.168.1.202    poqas1.eg.cn
-  192.168.1.200    poprd1.eg.cn
-</code></pre><p><img src="/img/sap/sap-pi/SAP-PI-2.png" alt="Alt text"><br>恭喜你配置完本地域名了！当然你也可以用IP和端口访问，具体这里不讲述！</p>
-<h2 id="PI日志查询"><a href="#PI日志查询" class="headerlink" title="PI日志查询"></a>PI日志查询</h2><hr>
-<p>在浏览器中输入：<a href="http://poprd1.eg.cn:50000/dir" target="_blank" rel="noopener">http://poprd1.eg.cn:50000/dir</a> 进入如下界面<br><img src="/img/sap/sap-pi/SAP-PI-3.png" alt="Alt text"><br>点击上图，红色框中的链接，进入到如下图的登录界面。<br><img src="/img/sap/sap-pi/SAP-PI-4.png" alt="Alt text"><br>登录后进入到监控主页，如下图,点击下图“适配器引擎”<br><img src="/img/sap/sap-pi/SAP-PI-5.png" alt="Alt text"><br>点击下图红色框中的链接<br><img src="/img/sap/sap-pi/SAP-PI-6.png" alt="Alt text"><br>进入到消息监控器：监控消息<br>显示界面如下图所示：<br><img src="/img/sap/sap-pi/SAP-PI-7.png" alt="Alt text"><br>将窗口移到最右边，点击入下图所示筛选按钮。<br><img src="/img/sap/sap-pi/SAP-PI-8.png" alt="Alt text"><br>在场景标识符中输入：<em>接口函数</em>，*匹配所有条件,按回车查询制定接口信息<br><img src="/img/sap/sap-pi/SAP-PI-9.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-10.png" alt="Alt text"><br>注意：如下图所示时间为调用接口的时间，选择制定时间<br><img src="/img/sap/sap-pi/SAP-PI-11.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-12.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-13.png" alt="Alt text"><br>出现浏览器拦截情况，按下图去操作。<br><img src="/img/sap/sap-pi/SAP-PI-14.png" alt="Alt text"><br>打开消息后会显示如下图所示的有效负载区，可以查询到外围系统所传的查询的条件。<br><img src="/img/sap/sap-pi/SAP-PI-15.png" alt="Alt text"><br>然后到sap系统中，事务码：se37  输入接口函数名，再输入外围系统的查询条件，执行<br><img src="/img/sap/sap-pi/SAP-PI-16.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-17.png" alt="Alt text"><br>将会获取到查询的结果集，点击结果集数据显示所有明细<br><img src="/img/sap/sap-pi/SAP-PI-18.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-19.png" alt="Alt text"><br>再到po中查询，sap回传的结果集，下载到本地，与sap所查询的结果进行匹配，排查数据是否一致。<br><img src="/img/sap/sap-pi/SAP-PI-20.png" alt="Alt text"><br><img src="/img/sap/sap-pi/SAP-PI-21.png" alt="Alt text"><br>失败记录重发<br><img src="/img/sap/sap-pi/SAP-PI-22.png" alt="Alt text"><br>点击上图圈中地方,跳转如下图页面，往下拖，点击一条记录，将会显示详细的信息，即可查看问题所在<br><img src="/img/sap/sap-pi/SAP-PI-23.png" alt="Alt text"><br>点击下图中“口”图标，点击全选后，按重新发送即可。<br><img src="/img/sap/sap-pi/SAP-PI-24.png" alt="Alt text"><br>谢谢！</p>
+        <p>废话不多说，直接进入主题<br>在这里，我把MIGO比作成接口一样，有发送方和接收方！MIGO中过账按钮则为理解为发送按钮，写入检验批QALS表中。</p>
+<h3 id="对于发送方"><a href="#对于发送方" class="headerlink" title="对于发送方"></a>对于发送方</h3><p>T-CODE:SE19  在典型业务加强项上填写：ZMB_MIGO_ITEM_BADI，显示后进入到接口，双击方法名，进入代码模式<br>这里不再多说，直接上代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">  METHOD if_ex_mb_migo_item_badi~item_modify.</span><br><span class="line">*&amp;BEGIN ADD BY LILY 12.12.2017 11:09:24----------------------------------------------------------*</span><br><span class="line"></span><br><span class="line">        DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">    DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">    DATA meile TYPE mseg-zeile.</span><br><span class="line">    DATA maxeile TYPE mseg-zeile.</span><br><span class="line">    DATA mflag(1) TYPE c.</span><br><span class="line">      EXPORT mflag = mflag</span><br><span class="line">        TO MEMORY ID <span class="string">'MFLAG'</span>.<span class="string">"是否排序,将标志写入内存中，此处可以不写。。。</span></span><br><span class="line"><span class="string">       IMPORT  maxeile to maxeile</span></span><br><span class="line"><span class="string">    FROM MEMORY ID  'MAXEILE'. "</span>将最大收货条数从内存中写入到变量maxeile中</span><br><span class="line">      IF maxeile &lt; is_goitem-zeile. <span class="string">"判断条的序号与最大序号大小</span></span><br><span class="line"><span class="string">        maxeile = is_goitem-zeile.</span></span><br><span class="line"><span class="string">        EXPORT maxeile = maxeile</span></span><br><span class="line"><span class="string">        TO MEMORY ID 'MAXEILE'."</span>在此取最大条数写入内存中</span><br><span class="line">      ENDIF.</span><br><span class="line">      CONCATENATE <span class="string">'ZPC'</span> is_goitem-zeile INTO memoryid.</span><br><span class="line">    l_zpc = is_goitem-zpc.</span><br><span class="line">    EXPORT l_zpc = l_zpc take_it = is_goitem-take_it</span><br><span class="line">        TO MEMORY ID memoryid.</span><br><span class="line"></span><br><span class="line">*&amp;END BY LILY 12.12.2017 11:09:25------------------------------------------------------------------*</span><br><span class="line"></span><br><span class="line">*源程序 START 注释BY :LILY</span><br><span class="line">*    DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">*    DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">*    CONCATENATE <span class="string">'ZPC'</span> is_goitem-zeile INTO memoryid.</span><br><span class="line">*    l_zpc = is_goitem-zpc.</span><br><span class="line">*    EXPORT l_zpc = l_zpc</span><br><span class="line">*        TO MEMORY ID memoryid.</span><br><span class="line">*END</span><br><span class="line">  ENDMETHOD.</span><br></pre></td></tr></table></figure></p>
+<h3 id="对于接收方"><a href="#对于接收方" class="headerlink" title="对于接收方"></a>对于接收方</h3><p>我这接收方进入方式，直接T-CODE:CMOD 项目：ZQM001-组件-功能出口EXIT_SAPLQPL1_002，进入代码编写。详细查找该增强，可以自己进行百度<br>这里不再多说，直接上代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">*&amp;BEGIN ADD BY LILY 12.12.2017 11:06:55----------------------------------------------------------*</span><br><span class="line">IF sy-tcode = <span class="string">'MIGO'</span>.</span><br><span class="line"></span><br><span class="line">MOVE-CORRESPONDING i_qals TO e_qals.</span><br><span class="line">DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">DATA meile TYPE mseg-zeile.</span><br><span class="line">DATA maxeile TYPE mseg-zeile.</span><br><span class="line">DATA mflag(1) TYPE c.</span><br><span class="line">DATA take_it(1) TYPE C.</span><br><span class="line">IMPORT  mflag TO mflag</span><br><span class="line">    FROM MEMORY ID  <span class="string">'MFLAG'</span>. <span class="string">"从内存中获取是否排序标志</span></span><br><span class="line"><span class="string">IF mflag &lt;&gt; 'X'."</span>没有排序则，进入排序</span><br><span class="line">  DATA n TYPE mseg-zeile.</span><br><span class="line">  DATA m TYPE mseg-zeile.</span><br><span class="line">  DATA:BEGIN OF wa_sort,</span><br><span class="line">  zeile TYPE mseg-zeile,</span><br><span class="line">  zpc TYPE mseg-zpc,</span><br><span class="line">  END OF wa_sort.</span><br><span class="line">  DATA:it_sort LIKE TABLE OF wa_sort.</span><br><span class="line"></span><br><span class="line">  IMPORT  maxeile TO maxeile</span><br><span class="line">    FROM MEMORY ID  <span class="string">'MAXEILE'</span>.<span class="string">"获取内存中存在的最大值</span></span><br><span class="line"><span class="string">  n = m = 1.</span></span><br><span class="line"><span class="string">  DO maxeile TIMES.</span></span><br><span class="line"><span class="string">    CONCATENATE 'ZPC' n INTO memoryid.</span></span><br><span class="line"><span class="string">    IMPORT   l_zpc TO l_zpc take_it TO take_it</span></span><br><span class="line"><span class="string">    FROM MEMORY ID  memoryid.</span></span><br><span class="line"><span class="string">    IF take_it = 'X' . "</span>判断流程订单行是否被选中，选中则排序</span><br><span class="line">      wa_sort-zpc = l_zpc.</span><br><span class="line">      wa_sort-zeile = m.</span><br><span class="line">      m = m + 1.</span><br><span class="line">      APPEND wa_sort TO it_sort.</span><br><span class="line">      clear wa_sort.</span><br><span class="line">    ENDIF.</span><br><span class="line">    n = n + 1.</span><br><span class="line">    CLEAR l_zpc.</span><br><span class="line">  ENDDO.</span><br><span class="line">  LOOP AT it_sort INTO wa_sort.<span class="string">"将排序后的内表项，替换掉内存所存在的值</span></span><br><span class="line"><span class="string">    CLEAR:l_zpc,memoryid.</span></span><br><span class="line"><span class="string">    l_zpc = wa_sort-zpc.</span></span><br><span class="line"><span class="string">    CONCATENATE 'ZPC' wa_sort-zeile INTO memoryid.</span></span><br><span class="line"><span class="string">    EXPORT l_zpc = l_zpc</span></span><br><span class="line"><span class="string">        TO MEMORY ID memoryid.</span></span><br><span class="line"><span class="string">  ENDLOOP.</span></span><br><span class="line"><span class="string">  mflag = 'X'.</span></span><br><span class="line"><span class="string">  EXPORT MFLAG = MFLAG</span></span><br><span class="line"><span class="string">        TO MEMORY ID 'MFLAG'."</span>将是否排序标志标志为X写入到内存里</span><br><span class="line">ENDIF.</span><br><span class="line"></span><br><span class="line">CONCATENATE <span class="string">'ZPC'</span> e_qals-zeile INTO memoryid.</span><br><span class="line">IMPORT   l_zpc</span><br><span class="line">    FROM MEMORY ID  memoryid.</span><br><span class="line">e_qals-ktextlos =  l_zpc.</span><br><span class="line">e_active = <span class="string">'X'</span>.</span><br><span class="line"></span><br><span class="line">ENDIF.</span><br><span class="line">*&amp;END BY LILY 12.12.2017 11:06:57------------------------------------------------------------------*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*源程序 START 注释BY :LILY</span><br><span class="line">*MOVE-CORRESPONDING i_qals TO e_qals.</span><br><span class="line">*DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">*DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">*CONCATENATE <span class="string">'ZPC'</span> e_qals-zeile INTO memoryid.</span><br><span class="line">*IMPORT   l_zpc</span><br><span class="line">*    FROM MEMORY ID  memoryid.</span><br><span class="line">*e_qals-ktextlos =  l_zpc.</span><br><span class="line">*e_active = <span class="string">'X'</span>.</span><br><span class="line">*END</span><br></pre></td></tr></table></figure></p>
+<p>最后，进行该增强时需要特别注意，发送方是将所有的流程订单项写入到内存中，不是将选中过账的流程订单写入到内存中，会导致写入QALS表中与RESB表的数据不一致，故执行上面的操作。<br>思路：将发送方的最大条数并且将是否选中的判断条件写入到内存，在接收方DO最大条数，再重新排序覆盖发送方写入内存的数据。再赋值到e_qals-ktextlos中去。</p>
 
       
       
@@ -361,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/12/12/SAP-PI/">SAP-PI 日志查询</a></p>
+        <p><span>本文标题:</span><a href="/2017/12/15/SAP-QALSZQ/">MIGO-QM检验批增强</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Liam 的个人博客">Liam</a></p>
-        <p><span>发布时间:</span>2017年12月12日 - 09时45分</p>
-        <p><span>最后更新:</span>2017年12月15日 - 11时27分</p>
+        <p><span>发布时间:</span>2017年12月15日 - 19时02分</p>
+        <p><span>最后更新:</span>2017年12月15日 - 19时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/12/12/SAP-PI/" title="SAP-PI 日志查询">http://yoursite.com/2017/12/12/SAP-PI/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/12/12/SAP-PI/　　作者: Liam" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/15/SAP-QALSZQ/" title="MIGO-QM检验批增强">http://yoursite.com/2017/12/15/SAP-QALSZQ/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/12/15/SAP-QALSZQ/　　作者: Liam" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -380,18 +348,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/12/14/CPJSBZRrport/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          产品计算标准报表
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/11/SAPTable/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SAP 常用表</div>
+    <a href="/2017/12/15/SAP-MES/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SAP----MES</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -402,7 +361,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名IP配置"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x57DF;&#x540D;IP&#x914D;&#x7F6E;" class="headerlink" title="&#x57DF;&#x540D;IP&#x914D;&#x7F6E;"></a>&#x57DF;&#x540D;IP&#x914D;&#x7F6E;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows系统"><span class="toc-number">1.1.</span> <span class="toc-text"><a href="#Windows&#x7CFB;&#x7EDF;" class="headerlink" title="Windows&#x7CFB;&#x7EDF;"></a>Windows&#x7CFB;&#x7EDF;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAC系统"><span class="toc-number">1.2.</span> <span class="toc-text"><a href="#MAC&#x7CFB;&#x7EDF;" class="headerlink" title="MAC&#x7CFB;&#x7EDF;"></a>MAC&#x7CFB;&#x7EDF;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PI日志查询"><span class="toc-number">2.</span> <span class="toc-text"><a href="#PI&#x65E5;&#x5FD7;&#x67E5;&#x8BE2;" class="headerlink" title="PI&#x65E5;&#x5FD7;&#x67E5;&#x8BE2;"></a>PI&#x65E5;&#x5FD7;&#x67E5;&#x8BE2;</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于发送方"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x5BF9;&#x4E8E;&#x53D1;&#x9001;&#x65B9;" class="headerlink" title="&#x5BF9;&#x4E8E;&#x53D1;&#x9001;&#x65B9;"></a>&#x5BF9;&#x4E8E;&#x53D1;&#x9001;&#x65B9;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于接收方"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5BF9;&#x4E8E;&#x63A5;&#x6536;&#x65B9;" class="headerlink" title="&#x5BF9;&#x4E8E;&#x63A5;&#x6536;&#x65B9;"></a>&#x5BF9;&#x4E8E;&#x63A5;&#x6536;&#x65B9;</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -468,13 +427,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/12/14/CPJSBZRrport/" title="上一篇: 产品计算标准报表">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/12/11/SAPTable/" title="下一篇: SAP 常用表">
+            <a href="/2017/12/15/SAP-MES/" title="下一篇: SAP----MES">
                 <i class="fa fa-angle-right"></i>
             </a>
         
