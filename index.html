@@ -237,6 +237,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-SAP-MIGO-PBO" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/09/SAP-MIGO-PBO/" class="article-date">
+      <time datetime="2018-01-09T04:01:17.266Z" itemprop="datePublished">2018-01-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/09/SAP-MIGO-PBO/">SAP-SAP-migo增强</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>本案例场景：采购收货时，判断是否为暂估价，若是暂估价则不允许过账收货并且提示错误信息。</p>
+<h4 id="寻找pbo增强点"><a href="#寻找pbo增强点" class="headerlink" title="寻找pbo增强点"></a>寻找pbo增强点</h4><p>pbo增强点位于，程序的相对应的屏幕上，可通过程序事务代码寻找程序码，再在SE38中打开相对应的程序，再展开屏幕。<br><img src="/img/sap/sap-lock/sap-migo-pbo-01.png" alt="Alt text"><br>展开后选择屏幕的选项，再寻找到200的屏幕<br><img src="/img/sap/sap-lock/sap-migo-pbo-02.png" alt="Alt text"><br>双击200屏幕号，将会进入到200对的程序代码，再双击下图重红色框中的module进入到module中，在这里就可以开始进行隐式增强。<br><img src="/img/sap/sap-lock/sap-migo-pbo-03.png" alt="Alt text"><br>隐式增强的实现方式在这里我将不细讲。<br><img src="/img/sap/sap-lock/sap-migo-pbo-04.png" alt="Alt text"><br><img src="/img/sap/sap-lock/sap-migo-pbo-05.png" alt="Alt text"><br>如图中，我在该处只做了将屏幕上传值字段GODYNPRO-REFDOC，GODYNPRO-ACTION写入到内存中，这两值对应着MIGO中如下图的值，再在后面进行处理，当然我们也可以直接在这里实现自己的操作。<br><img src="/img/sap/sap-lock/sap-migo-01.png" alt="Alt text"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">  DATA:kzabs LIKE ekpo-kzabs,</span><br><span class="line">       EBELN LIKE ekpo-EBELN,</span><br><span class="line">       EBELp LIKE ekpo-EBELN .</span><br><span class="line">  DATA mess(200) TYPE C.</span><br><span class="line"></span><br><span class="line">EXPORT REFDOC = GODYNPRO-REFDOC ACTION = GODYNPRO-ACTION</span><br><span class="line">        TO MEMORY ID <span class="string">'GODYNPRO'</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*  IF sy-tcode = <span class="string">'MIGO'</span> AND GODYNPRO-REFDOC = <span class="string">'R01'</span> AND GODYNPRO-ACTION = <span class="string">'A01'</span> .</span><br><span class="line">*   select SINGLE kzabs</span><br><span class="line">*     FROM ekpo</span><br><span class="line">*     INTO kzabs</span><br><span class="line">*     WHERE EBELN = goitem-EBELN</span><br><span class="line">*     AND EBELp = goitem-EBELp.</span><br><span class="line">*    IF kzabs = <span class="string">'X'</span>.</span><br><span class="line">*      goitem-take_it = <span class="string">''</span>.</span><br><span class="line">*      ebeln = goitem-EBELN.</span><br><span class="line">*     ebelp = goitem-EBELp.</span><br><span class="line">*        DATA mess(200) TYPE C.</span><br><span class="line">*        CONCATENATE goitem-EBELN <span class="string">'-'</span> goitem-EBELp  <span class="string">'此订单价格为暂估价，请联系采购部进行处理'</span> INTO mess.</span><br><span class="line">*        MESSAGE mess <span class="built_in">type</span>  <span class="string">'S'</span> RAISING exception.</span><br><span class="line">*        leave to transaction <span class="string">'MIGO'</span> and skip first screen .</span><br><span class="line">*      CONCATENATE EBELN <span class="string">'-'</span> EBELp  <span class="string">'此订单价格为暂估价，请联系采购部进行处理'</span> INTO mess.</span><br><span class="line">*      MESSAGE mess <span class="built_in">type</span>  <span class="string">'I'</span>.</span><br><span class="line">*     ENDIF.</span><br><span class="line"></span><br><span class="line">*  ENDIF.</span><br></pre></td></tr></table></figure>
+<p>为什么本案例不直接在这里做判断然后报提示呢？<br>原因本案例在这里或者实现不了我的需求，若能满足大家的需求，下面的内容可以看或者不用再看。但是若实现的方式与下面的方式一样，那上面的内容一定要了解下。<br>T-CODE:smod<br>具体的步骤如下（不细说）：<br><img src="/img/sap/sap-lock/sap-migo-pbo-06.png" alt="Alt text"><br><img src="/img/sap/sap-lock/sap-migo-pbo-07.png" alt="Alt text"><br><img src="/img/sap/sap-lock/sap-migo-pbo-08.png" alt="Alt text"><br><img src="/img/sap/sap-lock/sap-migo-pbo-09.png" alt="Alt text"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DATA:refdoc(8) TYPE c,</span><br><span class="line">      action(8) TYPE c,</span><br><span class="line">      kzabs LIKE ekpo-kzabs.</span><br><span class="line"></span><br><span class="line"> IMPORT   refdoc TO refdoc action TO action</span><br><span class="line">    FROM MEMORY ID  <span class="string">'GODYNPRO'</span>.</span><br><span class="line"></span><br><span class="line">IF refdoc = <span class="string">'R01'</span> AND action = <span class="string">'A01'</span>.  <span class="string">"判断是否为A01收货，R01采购订单</span></span><br><span class="line"><span class="string">    SELECT SINGLE kzabs</span></span><br><span class="line"><span class="string">     FROM ekpo</span></span><br><span class="line"><span class="string">     INTO kzabs</span></span><br><span class="line"><span class="string">     WHERE ebeln = i_mseg-ebeln</span></span><br><span class="line"><span class="string">     AND ebelp = i_mseg-ebelp.</span></span><br><span class="line"><span class="string">  IF kzabs = 'X'.</span></span><br><span class="line"><span class="string">    MESSAGE e001(00) WITH '该行价格为暂估价，请联系采购部进行处理！'.</span></span><br><span class="line"><span class="string">  ENDIF.</span></span><br><span class="line"><span class="string">ENDIF.</span></span><br></pre></td></tr></table></figure></p>
+<p>做到这里，想必大家知道为什么在pbo将屏幕的两个值写入到内存里了，就是为了不影响migo的其他操作。做到这里给我的感觉是，外面顾问的技术尚未成熟，在这程序里，我也只看到做T-CODE的判断，没有屏幕上其他的判断来执行各自的操作。</p>
+<p>谢谢！</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SAPBOMSAVETABLE" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -991,64 +1051,6 @@
 </tr>
 </tbody>
 </table>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SAP-CJTable" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/15/SAP-CJTable/" class="article-date">
-      <time datetime="2017-12-15T03:37:02.656Z" itemprop="datePublished">2017-12-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/15/SAP-CJTable/">SAP创建自建表</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>T-code:SE11 输入数据库表名称，命名规则Z<strong>T*</strong>，然后点击创建，若存在表则会提示表已存在。<br><img src="/img/sap/sap-cjtable/sap-cjtable-01.png" alt="Alt text"><br>创建后，则填入必填字段，‘描述’、‘交付类’，交付类一般选择A-应用表，表视图取系统默认。<br><img src="/img/sap/sap-cjtable/sap-cjtable-02.png" alt="Alt text"><br>选择字段，填入字段和数据元素后按回车，若出现下图情况则需创建数据元素<br><img src="/img/sap/sap-cjtable/sap-cjtable-03.png" alt="Alt text"></p>
-<p></p><h3>创建数据元素</h3><br><img src="/img/sap/sap-cjtable/sap-cjtable-04.png" alt="Alt text"><br><img src="/img/sap/sap-cjtable/sap-cjtable-05.png" alt="Alt text"><br>填入描述，基本类型选择预定义类型，按需求选择数据类型和设置长度<img src="/img/sap/sap-cjtable/sap-cjtable-06.png" alt="Alt text"><br>点开字段标签，输入长度和字段标签，该用处会体现在显示的时候<br><img src="/img/sap/sap-cjtable/sap-cjtable-07.png" alt="Alt text"><br>点击保存按钮，根据否需要传输而选择，保存方式，该处需要传输，所以填入存放的包，不传输则不需要填入包<br><img src="/img/sap/sap-cjtable/sap-cjtable-08.png" alt="Alt text"><br>需要传输就需要创建请求号了，这时候系统会自动带出上一个请求，如果与上个请求无关，则点击下图框起的地方创建，这里不再创建请求。<br><img src="/img/sap/sap-cjtable/1513310861654.png" alt="Alt text"><p></p>
-<p></p><h3>创建完数据元素后</h3><br>再回到创建透明表的程序，重新输入数据元素按回车，这个时候你会看到带出来的描述了<br><img src="/img/sap/sap-cjtable/sap-cjtable-09.png" alt="Alt text"><p></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在创建透明表的时候必须添加mandt这个字段，并且设为主键<br>检查和激活时会有警告提示，这时可以忽略。激活后弹出技术支持，根据需求选择相应数据类和大小类别。<br><img src="/img/sap/sap-cjtable/sap-cjtable-11.png" alt="Alt text"><br>检查和激活时会有警告提示，这时可以忽略。<br><img src="/img/sap/sap-cjtable/sap-cjtable-10.png" alt="Alt text"><br>激活后，选择是否放入包中传输，就意味着创建透明表成功了！！</p>
 
       
       

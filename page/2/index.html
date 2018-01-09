@@ -237,6 +237,64 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-SAP-CJTable" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/15/SAP-CJTable/" class="article-date">
+      <time datetime="2017-12-15T03:37:02.656Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/SAP-CJTable/">SAP创建自建表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>T-code:SE11 输入数据库表名称，命名规则Z<strong>T*</strong>，然后点击创建，若存在表则会提示表已存在。<br><img src="/img/sap/sap-cjtable/sap-cjtable-01.png" alt="Alt text"><br>创建后，则填入必填字段，‘描述’、‘交付类’，交付类一般选择A-应用表，表视图取系统默认。<br><img src="/img/sap/sap-cjtable/sap-cjtable-02.png" alt="Alt text"><br>选择字段，填入字段和数据元素后按回车，若出现下图情况则需创建数据元素<br><img src="/img/sap/sap-cjtable/sap-cjtable-03.png" alt="Alt text"></p>
+<p></p><h3>创建数据元素</h3><br><img src="/img/sap/sap-cjtable/sap-cjtable-04.png" alt="Alt text"><br><img src="/img/sap/sap-cjtable/sap-cjtable-05.png" alt="Alt text"><br>填入描述，基本类型选择预定义类型，按需求选择数据类型和设置长度<img src="/img/sap/sap-cjtable/sap-cjtable-06.png" alt="Alt text"><br>点开字段标签，输入长度和字段标签，该用处会体现在显示的时候<br><img src="/img/sap/sap-cjtable/sap-cjtable-07.png" alt="Alt text"><br>点击保存按钮，根据否需要传输而选择，保存方式，该处需要传输，所以填入存放的包，不传输则不需要填入包<br><img src="/img/sap/sap-cjtable/sap-cjtable-08.png" alt="Alt text"><br>需要传输就需要创建请求号了，这时候系统会自动带出上一个请求，如果与上个请求无关，则点击下图框起的地方创建，这里不再创建请求。<br><img src="/img/sap/sap-cjtable/1513310861654.png" alt="Alt text"><p></p>
+<p></p><h3>创建完数据元素后</h3><br>再回到创建透明表的程序，重新输入数据元素按回车，这个时候你会看到带出来的描述了<br><img src="/img/sap/sap-cjtable/sap-cjtable-09.png" alt="Alt text"><p></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在创建透明表的时候必须添加mandt这个字段，并且设为主键<br>检查和激活时会有警告提示，这时可以忽略。激活后弹出技术支持，根据需求选择相应数据类和大小类别。<br><img src="/img/sap/sap-cjtable/sap-cjtable-11.png" alt="Alt text"><br>检查和激活时会有警告提示，这时可以忽略。<br><img src="/img/sap/sap-cjtable/sap-cjtable-10.png" alt="Alt text"><br>激活后，选择是否放入包中传输，就意味着创建透明表成功了！！</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-CPJSBZRrport" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
