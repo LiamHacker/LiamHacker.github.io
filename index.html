@@ -237,6 +237,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-SAP-SHDB" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/17/SAP-SHDB/" class="article-date">
+      <time datetime="2018-01-17T07:41:15.572Z" itemprop="datePublished">2018-01-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/17/SAP-SHDB/">SHDB录屏程序调用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>增强还没写完，就写了SHDB了，哈哈。工作就是这样吧。<br>想必很多时候大家都不能用BAPI来实现修改或者新增数据的操作，这时录屏是一个不错的选择哦！业务场景就上面的那句话了。接下来直接开始我们今天的博客内容了。</p>
+<h4 id="第一步：录屏"><a href="#第一步：录屏" class="headerlink" title="第一步：录屏"></a>第一步：录屏</h4><p>T-CODE:SHDB 进行录屏。注意：这里录屏需要的环境要有数据才可以录哦。<br>这里我将用C202修改主配方为录屏例子。<br>进入到录屏程序中，点击新建记录<br><img src="/img/sap/sap-shdb/sap-shdb-01.png" alt="Alt text"><br>在记录栏中输入录屏的名称，事务代码中输入你要录的事务码<br><img src="/img/sap/sap-shdb/sap-shdb-02.png" alt="Alt text"><br>回车或者点击开始记录，将会开始录屏的操作，就会直接进入到C202的屏幕中，这时候就开始C202的修改操作，文章不再细讲。<br><img src="./sap-shdb-03.png" alt="Alt text"><br>操作完后点击保存，将会进入到下面的界面中，再点击保存会提示记录保存的信息，这时候我们可以开始下一步操作了<br><img src="/img/sap/sap-shdb/sap-shdb-04.png" alt="Alt text"><br>返回！再返回！有没有看到下面的图？？？<br><img src="/img/sap/sap-shdb/sap-shdb-05.png" alt="Alt text"><br>有没有在上图中找到程序两个字？？别多说，赶紧点它！<br><img src="/img/sap/sap-shdb/sap-shdb-06.png" alt="Alt text"><br>输入程序名称后，直接回车！接下来就是熟悉的报表程序新建过程了，当然是选择保存本地啦！然后再直接进到源代码里，这时候你就可以把你想要的源码拷出来到开发机使用了！<br><img src="/img/sap/sap-shdb/sap-shdb-07.png" alt="Alt text"><br>使用的时候注意了，工作空间可以直接使用该程序中的定义类型，字符串类型哦，其他类型可能会无法加载到BDCDATA这里哦，在这里也要全部拷贝里面的内容哦，取你想要的内容。<br>下面贴上我们所要的源码部分，具体怎么改还是要大家自己去调哦</p>
+<ul>
+<li><p>工作空间部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data: begin of record,</span><br><span class="line">* data element: PLNNR</span><br><span class="line">        PLNNR_001(008),</span><br><span class="line">* data element: CP_STTAG</span><br><span class="line">        STTAG_002(010),</span><br><span class="line">...</span><br><span class="line">      end of record.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主要的子程序部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">perform bdc_dynpro      using <span class="string">'SAPLCPDI'</span> <span class="string">'4000'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_CURSOR'</span></span><br><span class="line">                              <span class="string">'RC271-STTAG'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'/00'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'RC271-PLNNR'</span></span><br><span class="line">                              record-PLNNR_001.</span><br><span class="line">perform bdc_field       using <span class="string">'RC271-STTAG'</span></span><br><span class="line">                              record-STTAG_002.</span><br><span class="line">perform bdc_dynpro      using <span class="string">'SAPLCPDI'</span> <span class="string">'4400'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_CURSOR'</span></span><br><span class="line">                              <span class="string">'PLPOD-VORNR(02)'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'=PICK'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'RC27X-ENTRY_ACT'</span></span><br><span class="line">                              record-ENTRY_ACT_003.</span><br><span class="line">perform bdc_dynpro      using <span class="string">'SAPLCPDO'</span> <span class="string">'4410'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_CURSOR'</span></span><br><span class="line">                              <span class="string">'PLPOD-VGW05'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'=BACK'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'PLPOD-VORNR'</span></span><br><span class="line">                              record-VORNR_004.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'=RZUE'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'RC27X-ENTRY_ACT'</span></span><br><span class="line">                              record-ENTRY_ACT_025.</span><br><span class="line">perform bdc_dynpro      using <span class="string">'SAPLCPDI'</span> <span class="string">'4460'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_CURSOR'</span></span><br><span class="line">                              <span class="string">'PLPOD-UVORN(01)'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'=PICK'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'RC27X-ENTRY_ACT'</span></span><br><span class="line">                              record-ENTRY_ACT_026.</span><br><span class="line">perform bdc_dynpro      using <span class="string">'SAPLCPDO'</span> <span class="string">'4410'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_CURSOR'</span></span><br><span class="line">                              <span class="string">'PLPOD-VGW05'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'BDC_OKCODE'</span></span><br><span class="line">                              <span class="string">'=BU'</span>.</span><br><span class="line">perform bdc_field       using <span class="string">'PLPOD-UVORN'</span></span><br><span class="line">                              record-UVORN_027.</span><br><span class="line">perform bdc_transaction using <span class="string">'C202'</span>.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>子程序就要大家自己双击进去找，然后粘贴到自己程序中去哦。录屏讲解就大概到这里了哦，谢谢！</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SAP-ENHANCEMENT" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -749,64 +814,6 @@
 <p>添加锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LOOP AT it_alv INTO wa_alv.</span><br><span class="line">  &quot;获得表锁 锁定本窗口</span><br><span class="line">  CALL FUNCTION &apos;ENQUEUE_EZ_MM_ZMMT017_01&apos;</span><br><span class="line">   EXPORTING</span><br><span class="line">     MODE_ZMMT017         = &apos;X&apos;</span><br><span class="line">     MANDT                = SY-MANDT</span><br><span class="line">     MATNR                = wa_alv-matnr</span><br><span class="line">   EXCEPTIONS</span><br><span class="line">     FOREIGN_LOCK         = 1</span><br><span class="line">     SYSTEM_FAILURE       = 2</span><br><span class="line">     OTHERS               = 3</span><br><span class="line">            .</span><br><span class="line">      IF sy-subrc &lt;&gt; 0.</span><br><span class="line">    MESSAGE &apos;ZMMT017表被锁定，请等待另一窗口退出&apos; TYPE &apos;S&apos; DISPLAY LIKE &apos;E&apos;.</span><br><span class="line">    STOP.</span><br><span class="line">  ENDIF.</span><br><span class="line">ENDLOOP.</span><br></pre></td></tr></table></figure></p>
 <p> 解除锁</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   CALL FUNCTION &apos;DEQUEUE_EZ_MM_ZMMT017_01&apos;</span><br><span class="line">  EXPORTING</span><br><span class="line">MODE_ZMMT017       = &apos;X&apos;</span><br><span class="line">MANDT              = SY-MANDT</span><br><span class="line">MATNR              = &lt;fs_alv&gt;-matnr</span><br><span class="line">       .</span><br></pre></td></tr></table></figure>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SAP-QALSZQ" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/15/SAP-QALSZQ/" class="article-date">
-      <time datetime="2017-12-15T11:02:42.474Z" itemprop="datePublished">2017-12-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/15/SAP-QALSZQ/">MIGO-QM检验批增强</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>废话不多说，直接进入主题<br>在这里，我把MIGO比作成接口一样，有发送方和接收方！MIGO中过账按钮则为理解为发送按钮，写入检验批QALS表中。</p>
-<h3 id="对于发送方"><a href="#对于发送方" class="headerlink" title="对于发送方"></a>对于发送方</h3><p>T-CODE:SE19  在典型业务加强项上填写：ZMB_MIGO_ITEM_BADI，显示后进入到接口，双击方法名，进入代码模式<br>这里不再多说，直接上代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">  METHOD if_ex_mb_migo_item_badi~item_modify.</span><br><span class="line">*&amp;BEGIN ADD BY LILY 12.12.2017 11:09:24----------------------------------------------------------*</span><br><span class="line"></span><br><span class="line">        DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">    DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">    DATA meile TYPE mseg-zeile.</span><br><span class="line">    DATA maxeile TYPE mseg-zeile.</span><br><span class="line">    DATA mflag(1) TYPE c.</span><br><span class="line">      EXPORT mflag = mflag</span><br><span class="line">        TO MEMORY ID <span class="string">'MFLAG'</span>.<span class="string">"是否排序,将标志写入内存中，此处可以不写。。。</span></span><br><span class="line"><span class="string">       IMPORT  maxeile to maxeile</span></span><br><span class="line"><span class="string">    FROM MEMORY ID  'MAXEILE'. "</span>将最大收货条数从内存中写入到变量maxeile中</span><br><span class="line">      IF maxeile &lt; is_goitem-zeile. <span class="string">"判断条的序号与最大序号大小</span></span><br><span class="line"><span class="string">        maxeile = is_goitem-zeile.</span></span><br><span class="line"><span class="string">        EXPORT maxeile = maxeile</span></span><br><span class="line"><span class="string">        TO MEMORY ID 'MAXEILE'."</span>在此取最大条数写入内存中</span><br><span class="line">      ENDIF.</span><br><span class="line">      CONCATENATE <span class="string">'ZPC'</span> is_goitem-zeile INTO memoryid.</span><br><span class="line">    l_zpc = is_goitem-zpc.</span><br><span class="line">    EXPORT l_zpc = l_zpc take_it = is_goitem-take_it</span><br><span class="line">        TO MEMORY ID memoryid.</span><br><span class="line"></span><br><span class="line">*&amp;END BY LILY 12.12.2017 11:09:25------------------------------------------------------------------*</span><br><span class="line"></span><br><span class="line">*源程序 START 注释BY :LILY</span><br><span class="line">*    DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">*    DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">*    CONCATENATE <span class="string">'ZPC'</span> is_goitem-zeile INTO memoryid.</span><br><span class="line">*    l_zpc = is_goitem-zpc.</span><br><span class="line">*    EXPORT l_zpc = l_zpc</span><br><span class="line">*        TO MEMORY ID memoryid.</span><br><span class="line">*END</span><br><span class="line">  ENDMETHOD.</span><br></pre></td></tr></table></figure></p>
-<h3 id="对于接收方"><a href="#对于接收方" class="headerlink" title="对于接收方"></a>对于接收方</h3><p>我这接收方进入方式，直接T-CODE:CMOD 项目：ZQM001-组件-功能出口EXIT_SAPLQPL1_002，进入代码编写。详细查找该增强，可以自己进行百度<br>这里不再多说，直接上代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">*&amp;BEGIN ADD BY LILY 12.12.2017 11:06:55----------------------------------------------------------*</span><br><span class="line">IF sy-tcode = <span class="string">'MIGO'</span>.</span><br><span class="line"></span><br><span class="line">MOVE-CORRESPONDING i_qals TO e_qals.</span><br><span class="line">DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">DATA meile TYPE mseg-zeile.</span><br><span class="line">DATA maxeile TYPE mseg-zeile.</span><br><span class="line">DATA mflag(1) TYPE c.</span><br><span class="line">DATA take_it(1) TYPE C.</span><br><span class="line">IMPORT  mflag TO mflag</span><br><span class="line">    FROM MEMORY ID  <span class="string">'MFLAG'</span>. <span class="string">"从内存中获取是否排序标志</span></span><br><span class="line"><span class="string">IF mflag &lt;&gt; 'X'."</span>没有排序则，进入排序</span><br><span class="line">  DATA n TYPE mseg-zeile.</span><br><span class="line">  DATA m TYPE mseg-zeile.</span><br><span class="line">  DATA:BEGIN OF wa_sort,</span><br><span class="line">  zeile TYPE mseg-zeile,</span><br><span class="line">  zpc TYPE mseg-zpc,</span><br><span class="line">  END OF wa_sort.</span><br><span class="line">  DATA:it_sort LIKE TABLE OF wa_sort.</span><br><span class="line"></span><br><span class="line">  IMPORT  maxeile TO maxeile</span><br><span class="line">    FROM MEMORY ID  <span class="string">'MAXEILE'</span>.<span class="string">"获取内存中存在的最大值</span></span><br><span class="line"><span class="string">  n = m = 1.</span></span><br><span class="line"><span class="string">  DO maxeile TIMES.</span></span><br><span class="line"><span class="string">    CONCATENATE 'ZPC' n INTO memoryid.</span></span><br><span class="line"><span class="string">    IMPORT   l_zpc TO l_zpc take_it TO take_it</span></span><br><span class="line"><span class="string">    FROM MEMORY ID  memoryid.</span></span><br><span class="line"><span class="string">    IF take_it = 'X' . "</span>判断流程订单行是否被选中，选中则排序</span><br><span class="line">      wa_sort-zpc = l_zpc.</span><br><span class="line">      wa_sort-zeile = m.</span><br><span class="line">      m = m + 1.</span><br><span class="line">      APPEND wa_sort TO it_sort.</span><br><span class="line">      clear wa_sort.</span><br><span class="line">    ENDIF.</span><br><span class="line">    n = n + 1.</span><br><span class="line">    CLEAR l_zpc.</span><br><span class="line">  ENDDO.</span><br><span class="line">  LOOP AT it_sort INTO wa_sort.<span class="string">"将排序后的内表项，替换掉内存所存在的值</span></span><br><span class="line"><span class="string">    CLEAR:l_zpc,memoryid.</span></span><br><span class="line"><span class="string">    l_zpc = wa_sort-zpc.</span></span><br><span class="line"><span class="string">    CONCATENATE 'ZPC' wa_sort-zeile INTO memoryid.</span></span><br><span class="line"><span class="string">    EXPORT l_zpc = l_zpc</span></span><br><span class="line"><span class="string">        TO MEMORY ID memoryid.</span></span><br><span class="line"><span class="string">  ENDLOOP.</span></span><br><span class="line"><span class="string">  mflag = 'X'.</span></span><br><span class="line"><span class="string">  EXPORT MFLAG = MFLAG</span></span><br><span class="line"><span class="string">        TO MEMORY ID 'MFLAG'."</span>将是否排序标志标志为X写入到内存里</span><br><span class="line">ENDIF.</span><br><span class="line"></span><br><span class="line">CONCATENATE <span class="string">'ZPC'</span> e_qals-zeile INTO memoryid.</span><br><span class="line">IMPORT   l_zpc</span><br><span class="line">    FROM MEMORY ID  memoryid.</span><br><span class="line">e_qals-ktextlos =  l_zpc.</span><br><span class="line">e_active = <span class="string">'X'</span>.</span><br><span class="line"></span><br><span class="line">ENDIF.</span><br><span class="line">*&amp;END BY LILY 12.12.2017 11:06:57------------------------------------------------------------------*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*源程序 START 注释BY :LILY</span><br><span class="line">*MOVE-CORRESPONDING i_qals TO e_qals.</span><br><span class="line">*DATA l_zpc TYPE mseg-zpc.</span><br><span class="line">*DATA memoryid TYPE c LENGTH 10.</span><br><span class="line">*CONCATENATE <span class="string">'ZPC'</span> e_qals-zeile INTO memoryid.</span><br><span class="line">*IMPORT   l_zpc</span><br><span class="line">*    FROM MEMORY ID  memoryid.</span><br><span class="line">*e_qals-ktextlos =  l_zpc.</span><br><span class="line">*e_active = <span class="string">'X'</span>.</span><br><span class="line">*END</span><br></pre></td></tr></table></figure></p>
-<p>最后，进行该增强时需要特别注意，发送方是将所有的流程订单项写入到内存中，不是将选中过账的流程订单写入到内存中，会导致写入QALS表中与RESB表的数据不一致，故执行上面的操作。<br>思路：将发送方的最大条数并且将是否选中的判断条件写入到内存，在接收方DO最大条数，再重新排序覆盖发送方写入内存的数据。再赋值到e_qals-ktextlos中去。</p>
 
       
       
