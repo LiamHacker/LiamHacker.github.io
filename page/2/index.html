@@ -245,6 +245,80 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-SAP-ZCO" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/18/SAP-ZCO/" class="article-date">
+      <time datetime="2017-12-18T10:06:55.443Z" itemprop="datePublished">2017-12-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/18/SAP-ZCO/">SAP-ZCO-WebService接口</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>ZCO是什么？无非就是WebService的一种实现方式。当然，这也就是我个人的理解。写这篇文章时，非常感谢以下博主,改文章同时参考其：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/qlb8268/articles/3572673.html" target="_blank" rel="noopener">SAP与外部WebService接口链接</a></li>
+<li><a href="http://blog.csdn.net/yin_chuan_lang/article/details/6706693" target="_blank" rel="noopener">SAP和Java系统的Webservice实例</a></li>
+</ul>
+<p>所写的Webservice主要为JAVA与ABAP之间，对于JAVA我不陌生反而非常的熟悉，所以选择这两者。</p>
+<p>1、T-CODE:se80选择指定的包，每个公司所放的包有所不同，我这里是放本地对象，别问我本地对象与包的区别，当我不知道好了。再创建企业服务（Enterprise Service）见下图：</p>
+<p>2、会出现如下的创建导向窗口，选择 ‘Service Consumer’，点击‘继续’；</p>
+<p>3、在弹出的下一个窗口中选择‘External WSDL/Schema’，点击‘继续’;</p>
+<p>4、在弹出的窗口中，选择‘URL’，并输入wdsl地址</p>
+<p>5、在弹出的窗口中，在’Package’栏中输入所需保存的开发类，若保存为本地开发类，则需将‘Local/Object’选上；</p>
+<p>6、完成后出现下面界面，保存激活</p>
+<p>7、T-CODE:soamanager 设置逻辑端口(这里需要配置本地域名对应IP方可访问，配置方法见本博客中PI日志查询文章中)，接下的都选择默认即可。</p>
+<p>注意：ping的时候往往都会报错，此情况都为正常想象。可在程序中调用类和方法进行测试</p>
+<p>事务码：se24   显示这个类</p>
+<p>程序中调用代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">DATA:lo_proxy TYPE REF TO ZCO_SIMPLE_SERVICE_PORT_TYPE,“SAP类名</span><br><span class="line">     lo_input TYPE ZGET_PRICE_REQUEST,”此类型见下图</span><br><span class="line">     lo_output TYPE ZGET_PRICE_RESPONSE, ”此类型见下图</span><br><span class="line">     lo_sys_exception TYPE REF TO cx_ai_system_fault “服务异常</span><br><span class="line">      .</span><br><span class="line">TRY .</span><br><span class="line">  create OBJECT lo_proxy</span><br><span class="line">  EXPORTING</span><br><span class="line">    logical_port_name = &apos;ZXPROXY_SOA&apos;.“soamanager 下所新建的逻辑端口</span><br><span class="line">CALL METHOD lo_proxy-&gt;GET_PRICE  “lo_proxy类中的get_price方法</span><br><span class="line">EXPORTING</span><br><span class="line">  input = lo_input</span><br><span class="line">IMPORTING</span><br><span class="line">  outPUT = lo_output.</span><br><span class="line"></span><br><span class="line">CATCH cx_ai_system_fault INTO lo_sys_exception.</span><br><span class="line"></span><br><span class="line">ENDTRY.</span><br></pre></td></tr></table></figure>
+<p>INPUT和OUTPUT的查找方法</p>
+<p>事务码SE24</p>
+<p>图中即为INPUT和OUTPUT的参考类型。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SAP-LOCK" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
